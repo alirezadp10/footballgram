@@ -1,0 +1,58 @@
+@import "app";
+//////////////////////////////////////////////////////////////////
+/////////////////////////    ketchup    //////////////////////////
+//////////////////////////////////////////////////////////////////
+@import url('../plugins/ketchup/jquery.ketchup.css');
+
+//////////////////////////////////////////////////////////////////
+///////////////////////   login form    //////////////////////////
+//////////////////////////////////////////////////////////////////
+
+.login-form {
+  font-family : IRANSANS, sans-serif;
+  direction   : rtl;
+  .card-header {
+    text-align : right
+  }
+}
+
+.social-login-helper {
+  display    : block;
+  float      : right;
+  margin-top : 10px;
+  text-align : right;
+}
+
+.social-login {
+  text-align : right;
+
+  a > i {
+    margin    : 0 20px;
+    font-size : 40px;
+  }
+}
+
+@media (min-width : 1200px) {
+  .remember-me {
+    margin-left : 39.666667% !important;
+  }
+  .login-form-submit {
+    margin-left : 9.333333%;
+  }
+}
+
+@media (max-width : map-get($grid-breakpoints, "md")) {
+  .social-login {
+    display    : block;
+    clear      : both;
+    margin-top : 10px;
+    float      : right;
+  }
+
+  .social-login > a > i {
+    margin    : 0 10px;
+    font-size : 35px;
+  }
+
+}
+

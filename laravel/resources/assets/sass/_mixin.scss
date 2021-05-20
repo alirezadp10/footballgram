@@ -1,0 +1,13 @@
+@mixin title-style {
+  text-align    : center;
+  font-size     : 17px;
+  font-weight   : 800;
+  background    : $theme-color;
+  line-height   : 40px;
+  color         : white;
+  margin-bottom : 10px;
+
+  @media (max-width : map-get($grid-breakpoints, "sm")) {
+    font-size : 15px;
+  }
+}

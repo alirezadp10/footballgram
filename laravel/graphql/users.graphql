@@ -1,0 +1,41 @@
+extend type Query {
+    users(id: ID, name: String, username: String, mobile: String, first: Int, page: Int): CustomUserPaginator @field(resolver: "App\\GraphQL\\Queries\\UserQuery@all")
+    mostFollower: [User] @field(resolver: "App\\GraphQL\\Queries\\UserQuery@mostFollower")
+}
+
+extend type Mutation {
+    createUser(name: String!,email: String!,password: String!): User! @field(resolver: "App\\GraphQL\\Mutations\\UserMutation@create")
+    updateUser(id: ID!,info: updateUser): User! @field(resolver: "App\\GraphQL\\Mutations\\UserMutation@update") @broadcast(subscription: "userUpdated")
+}
+
+extend type Subscription {
+    userUpdated(user_id: ID): User @subscription(class: "App\\GraphQL\\Subscriptions\\UserUpdated")
+}
+
+input updateUser{
+    name: String
+    email: String
+    password: String
+}
+
+type User {
+    id: ID!
+    name: String!
+    username: String
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    comment: [Comment]
+    news: [News]
+    # have most follower
+    countFollowers: Int
+    countFollowings: Int
+    countPosts: Int
+    avatar: String
+    url: String
+}
+
+type CustomUserPaginator{
+    data: [User]
+    paginatorInfo: PaginatorInfo
+}

@@ -1,0 +1,175 @@
+@import "app";
+//////////////////////////////////////////////////////////////////
+////////////////////////     ketchup     /////////////////////////
+//////////////////////////////////////////////////////////////////
+@import url('../plugins/ketchup/jquery.ketchup.css');
+
+//////////////////////////////////////////////////////////////////
+////////////////////////     tinymce     /////////////////////////
+//////////////////////////////////////////////////////////////////
+
+@import '~tinymce/skins/lightgray/skin.min.css';
+
+//////////////////////////////////////////////////////////////////
+////////////////////////     wizard     //////////////////////////
+//////////////////////////////////////////////////////////////////
+
+@import "../plugins/Bootstrap-Wizard/dist/css/smart_wizard.css";
+@import "../plugins/Bootstrap-Wizard/dist/css/smart_wizard_theme_circles.css";
+@import "../plugins/Bootstrap-Wizard/dist/css/smart_wizard_theme_arrows.css";
+@import "../plugins/Bootstrap-Wizard/dist/css/smart_wizard_theme_dots.css";
+
+.sw-toolbar-bottom {
+  direction : rtl;
+}
+
+.sw-btn-next {
+  border-radius : 5px 0 0 5px !important;
+}
+
+.sw-btn-prev {
+  border-radius : 0 5px 5px 0 !important;
+}
+
+.step-anchor {
+  background : white;
+}
+
+#smartwizard {
+
+  display : none;
+
+  ul {
+    text-align : right;
+    direction  : rtl;
+
+    @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+      .nav-link {
+        padding : 5px 7px;
+      }
+    }
+
+  }
+
+  form {
+    text-align : right;
+    direction  : rtl;
+    display    : inline;
+
+    .steps {
+      min-height : 550px;
+      background : #F6F6F6;
+      padding    : 20px;
+    }
+
+    #step-2,
+    #step-3,
+    #step-4,
+    #step-5 {
+      display : none
+    }
+
+    #step-2 {
+      #input-photo {
+        display : none;
+      }
+
+      #preview-photo {
+        margin  : 0 auto 20px;
+        width   : 50%;
+        display : block;
+      }
+
+      .btn-info {
+        height      : 40px;
+        line-height : 25px;
+        width       : 50%;
+        margin      : 20px auto;
+        display     : block;
+      }
+    }
+
+    #step-4 {
+      div {
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : center;
+        align-items     : center;
+        min-height      : 500px;
+
+        button {
+          height    : 80px;
+          font-size : 25px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+    .sw-container {
+      margin     : 0;
+      padding    : 0;
+      min-height : 0;
+      font-size  : 14px;
+      input {
+        font-size : 14px;
+      }
+      .card-body {
+        padding : 0.5rem 1.5rem;
+      }
+      .steps {
+        min-height : 0;
+      }
+      #step-2 {
+        #preview-photo {
+          width : 100%;
+        }
+        .btn-info {
+          width : 100%;
+        }
+      }
+      #step-3 {
+        padding : 10px;
+      }
+      #step-4 div button {
+        height    : 40px;
+        font-size : 15px;
+      }
+    }
+    .sw-btn-group {
+      display : block;
+      width   : 100%;
+      .sw-btn-prev {
+        float : right;
+      }
+      .sw-btn-next {
+        float : left;
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .custom-container {
+    padding : 0;
+    margin  : 0;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+////////////////////////     select2    //////////////////////////
+//////////////////////////////////////////////////////////////////
+//@import "~select2/src/scss/core.scss";
+//.select2-selection__choice,
+//.select2-search--inline {
+//  float : right !important;
+//}
+//.select2-results__options {
+//  text-align : right !important;
+//}
+
+//////////////////////////////////////////////////////////////////
+////////////////////////     cropper    //////////////////////////
+//////////////////////////////////////////////////////////////////
+@import url('~cropper/dist/cropper.css');

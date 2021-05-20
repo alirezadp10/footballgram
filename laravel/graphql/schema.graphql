@@ -1,0 +1,11 @@
+type Query
+type Mutation
+type Subscription
+#import scalars.graphql
+#import users.graphql
+#import auth.graphql
+#import news.graphql
+#import broadcast.graphql
+#import comments.graphql
+#import images.graphql
+#import trends.graphql

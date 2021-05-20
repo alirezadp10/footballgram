@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+  #PHP Service
+  php:
+    build:
+      context: ./laravel
+      dockerfile: ../php/Dockerfile
+    image: php:7.4-upgrade
+    container_name: footballgram-php
+    restart: always
+    volumes:
+      - ./laravel:/var/www
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: footballgram-webserver
+    restart: always
+    ports:
+      - "5000:80"
+    volumes:
+      - ./laravel:/var/www
+      - ./nginx/:/etc/nginx/conf.d/
+
+  #PhpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: footballgram-phpmyadmin
+    restart: always
+    ports:
+      - "5001:80"
+
+  #MySQL Service
+  mysql:
+    image: mysql:5.7.22
+    container_name: footballgram-mysql
+    restart: always
+    ports:
+      - "5002:3306"
+    environment:
+      MYSQL_DATABASE: footballgram
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./volumes/mysql-data:/var/lib/mysql/
+      - ./laravel/database/backups/footballgram-2020-01-06.sql.gz:/docker-entrypoint-initdb.d/laravel-2020-04-09.sql.gz
+      # - /home/alirezadp10/Desktop/Projects/docker/laravel/backup.sql:/docker-entrypoint-initdb.d/backup.sql
+
+  #Redis Service
+  redis:
+    image: redis:latest
+    container_name: footballgram-redis
+    restart: always
+    ports:
+      - "5003:6379"
+    volumes:
+      - ./volumes/redis-data:/data
+

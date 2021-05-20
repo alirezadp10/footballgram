@@ -1,0 +1,9 @@
+extend type Query {
+    trend: [Trend] @field(resolver: "App\\GraphQL\\Queries\\TrendQuery")
+}
+
+type Trend {
+    name: String
+    count: Int
+    url: String
+}

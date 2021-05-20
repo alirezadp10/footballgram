@@ -1,0 +1,69 @@
+@font-face {
+    font-family : IRANSANS;
+    font-style  : normal;
+    font-weight : bold;
+    src         : url('../../fonts/iransans/woff/IRANSansWeb.woff');
+}
+
+#tinymce {
+    text-align  : right;
+    direction   : rtl;
+    font-family : IRANSANS, sans-serif;
+    padding     : 20px;
+}
+
+.preface {
+    display    : block;
+    background : #F9F9F9;
+    margin     : -20px -20px 10px;
+    padding    : 0.5em 10px;
+    font-weight: 500;
+}
+
+.conversation {
+    display       : block;
+    background    : #F9F9F9;
+    margin        : 10px -10px;
+    padding       : 0.5em 10px;
+    font-weight   : 500;
+    border-bottom : 5px solid gainsboro;
+    border-top    : 5px solid gainsboro;
+    position      : relative;
+    overflow      : hidden;
+}
+
+.conversation:before, .conversation:after {
+    content      : "";
+    height       : 100%;
+    position     : absolute;
+    left         : 0;
+    border-right : 5px solid gainsboro;
+}
+
+.conversation:before {
+    bottom : 50%;
+    right  : 0;
+}
+
+.mention {
+    color           : #9C27B0 !important;
+    direction       : ltr;
+    display         : inline-block;
+    text-decoration : none !important;
+    font-weight     : 500;
+    background      : #EFEFEF73;
+    padding         : 0 5px;
+}
+
+.hashtag {
+    position        : relative;
+    z-index         : 2;
+    margin-left     : 5px;
+    color           : #9C27B0 !important;
+    text-decoration : none !important;
+    font-weight     : 500;
+    background      : #EFEFEF73;
+    padding         : 0 5px 0 0;
+}
+
+

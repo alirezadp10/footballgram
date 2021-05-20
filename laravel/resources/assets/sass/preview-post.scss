@@ -1,0 +1,317 @@
+@import "app";
+
+
+.preface {
+  display    : block;
+  background : #F9F9F9;
+  margin     : -20px -20px 10px;
+  padding    : 0.5em 10px;
+  font-weight: 500;
+}
+
+.conversation {
+  display       : block;
+  background    : #F9F9F9;
+  margin        : 10px -10px;
+  padding       : 0.5em 10px;
+  font-weight   : 500;
+  border-bottom : 5px solid gainsboro;
+  border-top    : 5px solid gainsboro;
+  position      : relative;
+  overflow      : hidden;
+}
+
+.conversation:before, .conversation:after {
+  content      : "";
+  height       : 100%;
+  position     : absolute;
+  left         : 0;
+  border-right : 5px solid gainsboro;
+}
+
+.conversation:before {
+  bottom : 50%;
+  right  : 0;
+}
+
+.release-link {
+  width           : 90%;
+  direction       : rtl;
+  color           : inherit;
+  text-decoration : none !important;
+  margin          : auto;
+
+  button {
+    margin : 20px auto 0;
+  }
+}
+
+.draft-link {
+  width           : 90%;
+  direction       : rtl;
+  color           : inherit;
+  text-decoration : none !important;
+  margin          : auto;
+
+  button {
+    margin : 20px auto 0;
+  }
+}
+
+.post-main-header {
+  font-family   : IRANSANS_BOLD, sans-serif;
+  width         : 100%;
+  background    : #FFF;
+  margin-bottom : 5px;
+  padding       : 20px 100px;
+  min-height    : 165px;
+  position      : relative;
+
+  .post-main-title {
+    direction     : rtl;
+    width         : 100%;
+    font-size     : 24px;
+    line-height   : 48px;
+    text-align    : right;
+    margin-bottom : 55px;
+  }
+}
+
+.post-likes-content {
+  width       : 100%;
+  height      : 40px;
+  text-align  : right;
+  line-height : 43px;
+
+  .post-like-wrapper {
+
+    .post-like-button {
+      float       : left;
+      cursor      : pointer;
+      color       : green;
+      height      : 100%;
+      width       : 40%;
+      background  : #F8FFF9;
+      border      : none;
+      transition  : background-color 0.25s;
+      line-height : 41px;
+    }
+
+    .post-like-count {
+      float      : left;
+      cursor     : pointer;
+      height     : 100%;
+      width      : 60%;
+      background : #F8FFF9;
+      border     : none;
+      text-align : center;
+      transition : background-color 0.25s;
+    }
+
+    .post-liked {
+      background : green !important;
+      color      : white !important;
+    }
+
+    &:hover {
+      .post-like-button,
+      .post-like-count {
+        background : #9FFF8E;
+      }
+    }
+  }
+
+  .post-dislike-wrapper {
+
+    .post-dislike-button {
+      float       : left;
+      cursor      : pointer;
+      color       : red;
+      line-height : 41px;
+      height      : 100%;
+      width       : 40%;
+      background  : #FFF7F7;
+      border      : none;
+      transition  : background-color 0.25s;
+    }
+
+    .post-dislike-count {
+      cursor     : pointer;
+      height     : 100%;
+      width      : 60%;
+      background : #FFF7F7;
+      border     : none;
+      text-align : center;
+      transition : background-color 0.25s;
+      float      : left;
+    }
+
+    .post-disliked {
+      background : red !important;
+      color      : white !important;
+    }
+
+    &:hover {
+      .post-dislike-count,
+      .post-dislike-button {
+        background : #FFA38C;
+      }
+    }
+  }
+
+  .post-reported {
+    background : red !important;
+    color      : white !important;
+  }
+
+}
+
+.post-details {
+  text-align : center;
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+
+  .post-details {
+    margin-top : 15px;
+  }
+
+  .post-side-block {
+    margin-top : 15px;
+  }
+
+  .post-main-img {
+    margin-top : 0;
+  }
+
+  .post-main-header {
+    padding : 20px 50px;
+  }
+
+  .post-likes-content-parent {
+    margin-top : 25px;
+
+    .post-main-details {
+      z-index : 1;
+      top     : -45px;
+
+      .post-main-author {
+        margin-right : 15px;
+      }
+
+      .post-main-date {
+        position     : absolute;
+        margin-right : 50px;
+      }
+    }
+
+  }
+}
+
+.post-main-img {
+  width      : 100%;
+  margin-top : -55px;
+  box-shadow : 0 0 2px black;
+}
+
+.post-main-body {
+  direction   : rtl;
+  width       : 100%;
+  margin-top  : 15px;
+  background  : white;
+  font-family : IRANSANS, sans-serif;
+  padding     : 20px;
+  text-align  : right;
+  line-height : 36px;
+  font-size   : 18px;
+}
+
+.post-main-details {
+  width       : 100%;
+  direction   : rtl;
+  height      : 30px;
+  top         : -80px;
+  position    : absolute;
+  font-family : IRANSANS, sans-serif;
+  line-height : 30px;
+  text-align  : right;
+
+  .post-main-author {
+    float : right;
+  }
+
+  .post-main-date {
+    float : left;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .post-main-header {
+    padding : 10px 20px !important;
+  }
+
+  .post-comment-author, .post-comment-body {
+    margin-right : 60px !important;
+  }
+
+  .post-comment-user-avatar {
+    height : 50px !important;
+    width  : 50px !important;
+  }
+
+  .post-main-date {
+    display : none;
+  }
+
+}
+
+@media only screen and (max-width : 400px) {
+  .post-main-header {
+    padding : 15px !important;
+  }
+
+  .post-comment-user-avatar {
+    height : 30px !important;
+    width  : 30px !important;
+  }
+
+  .post-comment-author {
+    margin-right : 35px !important;
+  }
+
+  .post-comment-body {
+    margin-right : 0 !important;
+  }
+
+}
+
+.secondary-title {
+  font-size   : 15px;
+  display     : inline-block;
+  line-height : 35px;
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////     mention and hashtag     ///////////////////
+//////////////////////////////////////////////////////////////////
+
+.mention {
+  color           : $theme-color !important;
+  direction       : ltr;
+  display         : inline-block;
+  text-decoration : none !important;
+  font-weight     : 500;
+  background      : #EFEFEF73;
+  padding         : 0 5px;
+}
+
+.hashtag {
+  position        : relative;
+  z-index         : 2;
+  margin-left     : 5px;
+  color           : $theme-color !important;
+  text-decoration : none !important;
+  font-weight     : 500;
+  background      : #EFEFEF73;
+  padding         : 0 5px 0 0;
+}

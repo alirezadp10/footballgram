@@ -1,0 +1,77 @@
+@import "app";
+
+.wrapper {
+  direction : rtl;
+
+  .card-link {
+    text-decoration : none !important;
+    color           : inherit !important;
+
+    .avatar-border {
+      float         : right;
+      display       : inline-block;
+      border-radius : 50%;
+      padding       : 3px;
+      background    : -webkit-linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+
+      img {
+        width         : 90px;
+        border-radius : 50%;
+        height        : 100%;
+      }
+    }
+
+    .context {
+      margin-right : 120px;
+      display      : block;
+
+      .text-muted {
+        margin-bottom : 10px;
+        display       : inline-block;
+      }
+
+      h6 {
+        display     : block;
+        line-height : 25px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width : 560px) {
+  .card-body {
+    display : contents;
+  }
+
+  .avatar-border {
+    width         : 85px !important;
+    margin-left   : 10px !important;
+    float         : right !important;
+    border-radius : 0 !important;
+
+    img {
+      border-radius : 0 !important;
+      width         : 100% !important;
+    }
+  }
+
+  .context {
+    display  : inline !important;
+    margin   : 0 !important;
+    position : static !important;
+
+    .text-muted {
+      position : relative !important;
+      top      : 20px !important;
+      display  : block !important;
+    }
+
+    h6 {
+      padding     : 10px !important;
+      line-height : 30px !important;
+      word-break  : break-all !important;
+      margin-top  : 15px !important;
+      display     : static !important;
+    }
+  }
+}

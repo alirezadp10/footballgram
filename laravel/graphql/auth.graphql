@@ -1,0 +1,13 @@
+extend type Query {
+    register(name: String!,email: String!,password: String!): String @field(resolver: "App\\GraphQL\\Auth@register")
+    login(email: String!,password: String!): Passport @field(resolver: "App\\GraphQL\\Auth@login")
+    logout: String @field(resolver: "App\\GraphQL\\Auth@logout") @guard
+    refreshToken(refreshToken: String!): Passport @field(resolver: "App\\GraphQL\\Auth@refreshToken") @guard
+}
+
+type Passport{
+    token_type: String!
+    access_token: String!
+    refresh_token: String!
+    expires_in: String
+}

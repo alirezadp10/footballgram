@@ -1,0 +1,2545 @@
+@import url('~@fortawesome/fontawesome-free/css/all.css');
+@import '~bootstrap/scss/bootstrap.scss';
+@import url('~slider-pro/dist/css/slider-pro.css');
+@import '~slick-carousel/slick/slick.scss';
+@import url('~alertifyjs/build/css/alertify.css');
+@import url('~datatables.net-dt/css/jquery.dataTables.min.css');
+@import url('~persian-datepicker/dist/css/persian-datepicker.css');
+@import 'variables';
+@import 'mixin';
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : 900;
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Black.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Black.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb_Black.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb_Black.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb_Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : bold;
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Bold.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb_Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb_Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb_Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : 500;
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Medium.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb_Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb_Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb_Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : 300;
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Light.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb_Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb_Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb_Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : 200;
+  src         : url('/fonts/iransans/eot/IRANSansWeb_UltraLight.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb_UltraLight.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family : IRANSANS;
+  font-style  : normal;
+  font-weight : normal;
+  src         : url('/fonts/iransans/eot/IRANSansWeb.eot');
+  src         : url('/fonts/iransans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+  url('/fonts/iransans/woff2/IRANSansWeb.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+  url('/fonts/iransans/woff/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+  url('/fonts/iransans/ttf/IRANSansWeb.ttf') format('truetype');
+}
+
+.hide {
+  display : none;
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .hide-in-xs {
+    display : none;
+  }
+}
+
+@media only screen and (min-width : map-get($grid-breakpoints, "sm")) and (max-width : map-get($grid-breakpoints, "md")) {
+  .hide-in-sm {
+    display : none;
+  }
+}
+
+@media only screen and (min-width : map-get($grid-breakpoints, "md")) and (max-width : map-get($grid-breakpoints, "xl")) {
+  .hide-in-md {
+    display : none;
+  }
+}
+
+@media only screen and (min-width : map-get($grid-breakpoints, "md")) and (max-width : map-get($grid-breakpoints, "lg")) {
+  .hide-in-lg {
+    display : none;
+  }
+}
+
+@media only screen and (min-width : map-get($grid-breakpoints, "xl")) {
+  .hide-in-xl {
+    display : none;
+  }
+}
+
+ul {
+  padding-right : 0;
+}
+
+a {
+  text-decoration : none;
+  color           : inherit;
+
+  &:hover {
+    color           : $theme-color;
+    text-decoration : none;
+  }
+}
+
+button {
+  &:focus {
+    outline : none !important;
+  }
+}
+
+body {
+  background  : #E2E2E2 no-repeat center center fixed;
+  font-family : IRANSANS, sans-serif;
+  direction   : rtl;
+}
+
+.table-bordered th, .table-bordered td {
+  border-color : rgba(222, 226, 230, 0.35);
+}
+
+.tooltip {
+  font-family : IRANSANS, sans-serif;
+}
+
+.before-send {
+  background : #0000004D;
+  width      : 100%;
+  height     : 100%;
+  position   : fixed;
+  z-index    : 10000;
+
+  img {
+    position : fixed;
+    z-index  : 10001;
+    top      : 50%;
+    left     : 50%;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .before-send {
+    img {
+      left : 42%;
+    }
+  }
+}
+
+.list-group-item:hover, .list-group-item:focus {
+  z-index : 0;
+}
+
+#preloader {
+  position         : fixed;
+  top              : 0;
+  left             : 0;
+  right            : 0;
+  bottom           : 0;
+  background-color : #FFF;
+  /* change if the mask should have another color then white */
+  z-index          : 99;
+  /* makes sure it stays on top */
+}
+
+#status {
+  text-align : center;
+  width      : 200px;
+  height     : 200px;
+  position   : absolute;
+  left       : 50%;
+  top        : 50%;
+  margin     : -50px 0 0 -100px;
+}
+
+////////////////////////////////////////////
+//start custom container
+////////////////////////////////////////////
+
+.custom-container {
+  padding-bottom : 20px;
+  margin-top     : 20px;
+  max-width      : 1600px;
+  direction      : rtl;
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "xl")) {
+  .custom-container {
+    padding-bottom : 15px !important;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+  .custom-container {
+    padding-bottom : 15px;
+    margin         : 0;
+  }
+}
+
+////////////////////////////////////////////
+//end custom container
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+//start slider
+////////////////////////////////////////////
+
+.slider-wrapper {
+  margin-top : 5px;
+}
+
+.sp-black {
+  background : rgba(0, 0, 0, 0.7);
+}
+
+.sp-white {
+  background : rgba(255, 255, 255, 0.8);
+}
+
+.sp-selected-thumbnail:before {
+  border-color : gold !important;
+}
+
+.sp-selected-thumbnail:after {
+  border : none !important;
+}
+
+.sp-caption {
+  background  : rgba(0, 0, 0, 0.7);
+  position    : absolute;
+  width       : 100%;
+  bottom      : 0;
+  font-size   : 15px;
+  line-height : 30px;
+  text-align  : right;
+  color       : white;
+  padding     : 10px 16px;
+}
+
+.sp-layer {
+  text-align    : right;
+  font-size     : 20px !important;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  white-space   : nowrap;
+  max-width     : 98%;
+}
+
+.sp-layer-tag {
+  font-size : 15px !important;
+}
+
+.sp-caption-container {
+  display : none;
+}
+
+.slick-arrow {
+  display : none !important;
+}
+
+.slider-caption {
+  background  : rgba(0, 0, 0, 0.7);
+  color       : white;
+  width       : 100%;
+  position    : absolute;
+  bottom      : 0;
+  padding     : 10px;
+  white-space : normal;
+  text-align  : right;
+}
+
+.main-slider-preloader {
+  width  : 100%;
+  height : 100%;
+
+  img {
+    position : relative;
+    top      : 40%;
+    left     : 47%;
+    height   : 50px;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+  .slider-wrapper {
+    margin-top : 20px;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .hide-small-screen {
+    display : none;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .sp-caption {
+    display : block !important;
+  }
+
+  .sp-layer {
+    display : none;
+  }
+}
+
+////////////////////////////////////////////
+//end slider
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+//start followers
+////////////////////////////////////////////
+
+.users-most-followed {
+
+  margin-top : 5px;
+
+  .users-most-followed-item {
+    width      : 100%;
+    height     : 140px;
+    background : white;
+    margin-top : 10px;
+    position   : relative;
+
+    a {
+      color : inherit !important;
+      img {
+        background    : $instagram-bg;
+        position      : absolute;
+        right         : 0;
+        width         : 130px;
+        height        : 130px;
+        border-radius : 50%;
+        padding       : 3px;
+        margin        : 5px;
+      }
+
+    }
+  }
+
+  .users-most-followed-item-details {
+    position    : absolute;
+    padding     : 10px;
+    right       : 40%;
+    width       : 60%;
+    height      : 100%;
+    text-align  : center;
+    line-height : 30px;
+  }
+
+  .users-most-followed-item-username {
+    overflow      : hidden;
+    text-overflow : ellipsis;
+    white-space   : nowrap;
+    direction     : ltr;
+  }
+
+  .users-most-followed-title {
+    font-weight : 700;
+    width       : 100%;
+    height      : 50px;
+    text-align  : center;
+    font-size   : 20px;
+    line-height : 50px;
+    color       : white;
+    background  : $instagram-bg;
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+    .users-most-followed-title {
+      font-size   : 15px;
+      line-height : 40px;
+      height      : 40px;
+    }
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) and (min-width : map-get($grid-breakpoints, "md")) {
+  .users-most-followed-item > img {
+    width : 20%;
+  }
+
+  .users-most-followed-item-details {
+    right : 30%;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .users-most-followed-item-details {
+    font-size : 14px !important;
+  }
+}
+
+////////////////////////////////////////////
+//end followers
+////////////////////////////////////////////
+
+.hot-news {
+  margin-top : -85px;
+
+  .news-body {
+    height : auto;
+  }
+}
+
+.chief-choice {
+  margin-top : -15px;
+  .chief-choice-title {
+    @include title-style;
+  }
+  .chief-choice-item {
+    margin-top : 10px;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .chief-choice {
+    .card-body {
+      font-size : 14px !important;
+    }
+  }
+}
+
+.middle-content {
+  margin-top : -485px;
+
+  .survey {
+    width         : 100%;
+    margin-bottom : 15px;
+
+    .survey-title {
+      text-align    : center;
+      font-size     : 17px;
+      font-weight   : 800;
+      background    : $theme-color;
+      line-height   : 40px;
+      color         : white;
+      margin-bottom : 10px;
+
+      #add-survey {
+        font-size   : 25px;
+        line-height : 42px;
+        cursor      : pointer;
+        position    : absolute;
+        left        : 30px;
+      }
+    }
+
+    .survey-body {
+      background : white;
+      height     : 450px;
+      text-align : right;
+      padding    : 10px;
+      overflow   : auto;
+
+      .question {
+        position    : relative;
+        background  : #F6F6F6;
+        line-height : 50px;
+        padding     : 0 65px 0 10px;
+        .question-number {
+          position    : absolute;
+          right       : 0;
+          top         : 0;
+          font-size   : 25px;
+          line-height : 50px;
+          padding     : 0 10px;
+          color       : #585858;
+          background  : #E4E4E4;
+          width       : 50px;
+          text-align  : center;
+        }
+
+      }
+
+      .option {
+        background  : #F6F6F6;
+        padding     : 0 15px;
+        line-height : 50px;
+        cursor      : pointer;
+
+        &:hover {
+          background : gainsboro;
+        }
+      }
+
+      .selected {
+        background : #FFEB3B !important;
+      }
+    }
+
+    .survey-chart {
+      display    : none;
+      background : white;
+      padding    : 20px;
+      height     : 450px;
+
+      * {
+        font-family : IRANSANS, sans-serif !important;
+      }
+    }
+
+    .add-survey {
+      display    : none;
+      background : white;
+      height     : 450px;
+      text-align : right;
+      padding    : 10px;
+      overflow   : auto;
+
+      .question {
+        position    : relative;
+        background  : #F6F6F6;
+        line-height : 50px;
+        padding     : 5px;
+
+        input {
+          width       : 100%;
+          text-indent : 10px;
+        }
+
+        &:hover {
+          background : gainsboro;
+        }
+
+      }
+
+      .option {
+        background  : #F6F6F6;
+        padding     : 5px;
+        line-height : 50px;
+        cursor      : pointer;
+
+        input {
+          width       : 100%;
+          text-indent : 10px;
+        }
+
+        &:hover {
+          background : gainsboro;
+        }
+      }
+
+      .add-survey-option {
+        font-size : 18px;
+        margin    : 5px
+      }
+
+      .survey-store-btn {
+        font-size : 18px;
+        float     : left;
+        padding   : 5px 30px;
+        margin    : 5px;
+      }
+    }
+
+    .survey-footer {
+      padding    : 10px 15px;
+      height     : 55px;
+      background : #FCFCFC;
+
+      .control {
+        float : right;
+      }
+
+      .show-survey {
+        display : none;
+      }
+
+    }
+  }
+
+  .newspapers {
+    width         : 100%;
+    margin-bottom : 15px;
+
+    .newspapers-title {
+      text-align    : center;
+      font-size     : 17px;
+      font-weight   : 800;
+      background    : $theme-color;
+      line-height   : 40px;
+      color         : white;
+      margin-bottom : 10px;
+    }
+
+    .newspapers-body {
+      background : white;
+      height     : 500px;
+      overflow   : hidden;
+
+      .carousel {
+        height     : 100%;
+        background : #C3C3C3 url("/images/preloader.gif") no-repeat center;
+
+        img {
+          height : 500px;
+          width  : 100%;
+        }
+      }
+    }
+  }
+}
+
+.broadcast-schedule {
+  margin : -15px auto 20px;
+
+  .broadcast-schedule-title {
+    @include title-style;
+    margin-bottom : 10px;
+
+    #broadcast-schedule-add {
+      font-size   : 25px;
+      line-height : 42px;
+      cursor      : pointer;
+      position    : absolute;
+      left        : 30px;
+    }
+  }
+
+  .broadcast-schedule-body {
+    background : white;
+    height     : 615px;
+    padding    : 5px;
+    overflow-y : auto;
+    overflow-x : hidden;
+    .broadcast-schedule-item {
+      background    : #F6F6F6;
+      height        : 120px;
+      display       : grid;
+      align-content : center;
+      margin-bottom : 5px;
+      position      : relative;
+      .broadcast-schedule-delete {
+        position    : absolute;
+        z-index     : 100;
+        left        : 0;
+        width       : 17px;
+        cursor      : pointer;
+        text-align  : center;
+        font-size   : 28px;
+        height      : 17px;
+        line-height : 20px;
+        border      : 0.5px solid #E2E2E2;
+        &:hover {
+          border-color : grey;
+        }
+      }
+      .broadcast-schedule-edit {
+        position    : absolute;
+        z-index     : 100;
+        left        : 17px;
+        cursor      : pointer;
+        width       : 17px;
+        text-align  : center;
+        font-size   : 13px;
+        height      : 17px;
+        line-height : 20px;
+        border      : 0.5px solid #E2E2E2;
+        &:hover {
+          border-color : grey;
+        }
+      }
+      .broadcast-schedule-item-image {
+        margin        : auto;
+        background    : white;
+        width         : 80px;
+        height        : 80px;
+        padding       : 10px;
+        border-radius : 50%;
+        display       : grid;
+        align-content : center;
+        overflow      : hidden;
+      }
+      .match-title {
+        background  : #E3E3E3;
+        text-align  : center;
+        line-height : 35px;
+      }
+      .match-time {
+        background  : #EDEDED;
+        text-align  : center;
+        line-height : 35px;
+        .input-group {
+          padding : 4px;
+          .broadcast-schedule-calender {
+            display    : none;
+            width      : 40px;
+            text-align : center;
+            background : white;
+            cursor     : pointer;
+
+            i {
+              font-size : 20px;
+              margin    : auto;
+            }
+          }
+          .broadcast-schedule-time-input {
+            text-align    : center;
+            background    : white;
+            border        : none;
+            border-right  : 1px solid #D6D6D6;
+            border-radius : 0;
+            font-size     : 14px;
+            padding       : 7px 0px;
+          }
+          .broadcast-schedule-time-input-edit {
+            text-align    : center;
+            background    : white;
+            border        : none;
+            border-right  : 1px solid #D6D6D6;
+            border-radius : 0;
+            font-size     : 14px;
+            padding       : 7px 0px;
+          }
+        }
+      }
+      .broadcast-schedule-host {
+        height      : 100%;
+        width       : 45%;
+        text-align  : center;
+        margin-left : 3px;
+      }
+      .broadcast-schedule-guest {
+        height       : 100%;
+        width        : 45%;
+        text-align   : center;
+        margin-right : 3px;
+      }
+      .broadcast-schedule-submit {
+        background  : $theme-color;
+        font-weight : 700;
+      }
+      .broadcast-schedule-edit-submit {
+        background  : $theme-color;
+        font-weight : 700;
+      }
+      .broadcast-schedule-edit-cancel {
+        font-weight : 700;
+      }
+    }
+  }
+
+  .broadcast-schedule-body::-webkit-scrollbar {
+    width : 5px;
+  }
+
+  .broadcast-schedule-body::-webkit-scrollbar-thumb {
+    background    : $theme-color;
+    border-radius : 10px;
+  }
+
+}
+
+.video {
+  margin-top : -670px;
+  .video-title {
+    @include title-style;
+    margin-bottom : 10px;
+  }
+}
+
+.card-img-top {
+  background : #C3C3C3 url("/images/preloader.gif") no-repeat center;
+  height     : 260px;
+}
+
+////////////////////////////////////////////
+//start leagues
+////////////////////////////////////////////
+.league-parent {
+  margin-top : -105px;
+
+  .league-nav {
+    max-width     : 1580px;
+    text-align    : right;
+    overflow      : hidden;
+    margin-top    : 20px;
+    background    : #FFF;
+    padding       : 5px 0 0 0;
+    line-height   : 50px;
+    margin-bottom : 5px;
+
+    .league-nav-item-wrapper::-webkit-scrollbar {
+      width      : 0; /* remove scrollbar space */
+      background : transparent; /* optional: just make scrollbar invisible */
+      height     : 5px
+    }
+
+    .league-nav-item-wrapper::-webkit-scrollbar-thumb {
+      background    : $theme-color;
+      border-radius : 10px;
+      border-top    : solid 1px transparent;
+      border-bottom : solid 2px transparent;
+    }
+
+    .league-nav-item-wrapper {
+      white-space : nowrap;
+      overflow-x  : scroll;
+    }
+
+    .league-nav-item {
+      border-radius : 27px;
+      padding       : 5px 10px;
+      margin        : 0 5px;
+      background    : #F2F2F2;
+      line-height   : 30px;
+      color         : #5F5F5F;
+    }
+
+    .active {
+      background  : $theme-color;
+      color       : #FFF;
+      box-shadow  : none;
+      font-weight : 700;
+      border      : none;
+    }
+  }
+
+  #nav-league-table {
+
+    overflow-y : scroll;
+
+    .league-table-select {
+      text-align      : center;
+      height          : 30px;
+      text-align-last : center;
+
+      #league-table-year {
+        direction : ltr;
+        width     : 80%;
+      }
+    }
+
+    .league-table-body-team {
+      font-size : 15px;
+    }
+
+    .group-title {
+      width       : 100%;
+      background  : #FFF;
+      height      : 45px;
+      font-weight : 900;
+      font-size   : 23px;
+      color       : #565656;
+      line-height : 45px;
+      text-align  : center;
+      margin-top  : 20px;
+    }
+
+    .table {
+      font-size  : 12px;
+      text-align : center;
+
+      .thead-default {
+        tr {
+          background : rgba(0, 56, 77, 1);
+          background : -moz-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -webkit-gradient(left top, right top, color-stop(0%, rgba(0, 56, 77, 1)), color-stop(50%, rgba(23, 122, 209, 1)), color-stop(100%, rgba(0, 56, 77, 1)));
+          background : -webkit-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -o-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -ms-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : linear-gradient(to right, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr='#00384d', endColorstr='#00384d', GradientType=1);
+          * {
+            color       : #FFF;
+            font-weight : 900;
+          }
+        }
+      }
+
+      .league-table-body-position,
+      .league-table-body-goals-against,
+      .league-table-body-goals-for,
+      .league-table-body-goals-difference,
+      .league-table-body-drawn,
+      .league-table-body-points,
+      .league-table-body-won,
+      .league-table-body-lost,
+      .league-table-body-played {
+        font-size : 17px;
+      }
+      .league-table-body-goals-difference {
+        direction : ltr;
+      }
+
+      td, th {
+        white-space : nowrap;
+      }
+
+    }
+
+  }
+
+  #nav-league-table::-webkit-scrollbar {
+    width : 0;
+  }
+
+  #nav-league-scorers {
+
+    .dataTables_wrapper {
+      overflow-y : scroll;
+    }
+
+    .dataTables_wrapper::-webkit-scrollbar {
+      width : 0;
+    }
+
+    .table {
+      font-size  : 14px;
+      text-align : center;
+      .thead-default {
+        tr {
+          background : rgba(0, 56, 77, 1);
+          background : -moz-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -webkit-gradient(left top, right top, color-stop(0%, rgba(0, 56, 77, 1)), color-stop(50%, rgba(23, 122, 209, 1)), color-stop(100%, rgba(0, 56, 77, 1)));
+          background : -webkit-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -o-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : -ms-linear-gradient(left, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          background : linear-gradient(to right, rgba(0, 56, 77, 1) 0%, rgba(23, 122, 209, 1) 50%, rgba(0, 56, 77, 1) 100%);
+          filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr='#00384d', endColorstr='#00384d', GradientType=1);
+          * {
+            color       : #FFF;
+            font-weight : 900;
+          }
+        }
+      }
+
+      tbody {
+        font-size : 17px;
+
+        .league-scores-body-name,
+        .league-scores-body-club {
+          direction : ltr;
+        }
+      }
+
+      td, th {
+        white-space : nowrap;
+      }
+
+    }
+
+    .league-scorers-select {
+      text-align      : center;
+      height          : 30px;
+      text-align-last : center;
+
+      #league-scorers-year {
+        direction : ltr;
+        width     : 80%;
+      }
+    }
+
+  }
+
+  .league-body-plan-item-match {
+    width    : 100%;
+    height   : 40px;
+    margin   : 0 auto;
+    position : relative
+  }
+
+  .league-body-plan-item-match-host {
+    width         : 50%;
+    height        : 100%;
+    text-align    : center;
+    background    : #F6F6F6;
+    position      : absolute;
+    right         : 0;
+    line-height   : 40px;
+    border-left   : 1px solid white;
+    overflow      : hidden;
+    white-space   : nowrap;
+    text-overflow : ellipsis;
+  }
+
+  .league-body-plan-item-match-guest {
+    width         : 50%;
+    height        : 100%;
+    text-align    : center;
+    background    : #F6F6F6;
+    position      : absolute;
+    left          : 0;
+    line-height   : 40px;
+    border-right  : 1px solid white;
+    overflow      : hidden;
+    white-space   : nowrap;
+    text-overflow : ellipsis;
+  }
+
+  .league-body-plan-item-match-host-count-goals {
+    background : #D3D3D3;
+    width      : 40px;
+    height     : 100%;
+    float      : left
+  }
+
+  .league-body-plan-item-match-guest-count-goals {
+    background : #D3D3D3;
+    width      : 40px;
+    height     : 100%;
+    float      : right
+  }
+
+  .league-body-plan-item-dates {
+    background  : #E3E3E3;
+    width       : 100%;
+    height      : 30px;
+    margin      : 5px auto 0;
+    text-align  : center;
+    color       : #5F5F5F;
+    font-size   : 12px;
+    line-height : 30px
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+    #nav-news {
+      font-size : 14px;
+    }
+    .league-nav-item-wrapper {
+      button {
+        font-size : 14px;
+      }
+    }
+    #nav-league-table {
+      font-size : 14px;
+    }
+    #nav-league-scorers {
+      font-size : 14px;
+      tbody {
+        font-size : 14px !important;
+      }
+    }
+    #nav-league-plan {
+      font-size : 14px;
+    }
+  }
+
+  .league {
+    position      : relative;
+    height        : 850px;
+    background    : #FFF;
+    width         : 100%;
+    box-shadow    : 0 0 1px gray;
+    margin-bottom : 15px;
+    overflow-y    : scroll;
+
+    .league-header-scope {
+      border      : none !important;
+      position    : relative;
+      height      : 50px;
+      width       : 100%;
+      cursor      : pointer;
+      font-weight : 700;
+      font-size   : 16px;
+      line-height : 50px;
+      text-align  : center;
+      color       : #5F5F5F;
+      background  : #E3E3E3;
+
+      .league-header-news {
+        width : 25%;
+        float : right;
+      }
+
+      .league-header-table {
+        border-right : 1px solid whitesmoke;
+        width        : 25%;
+        float        : right;
+      }
+
+      .league-header-scorers {
+        border-right : 1px solid whitesmoke;
+        width        : 25%;
+        float        : right;
+      }
+
+      .league-header-plan {
+        border-right : 1px solid whitesmoke;
+        width        : 25%;
+        float        : right;
+      }
+
+      .active {
+        background : #F8F8F8;
+        color      : #000;
+        box-shadow : inset 0 0 20px 1px #ACACAC;
+      }
+
+    }
+
+    .league-body {
+      position   : relative;
+      width      : 100%;
+      overflow-y : auto;
+      overflow-x : hidden;
+      margin-top : 1px;
+
+      #nav-news {
+        .list-group {
+          width : 100%;
+        }
+      }
+
+      .league-body-item {
+        border-radius : 0 !important;
+        text-align    : right;
+        cursor        : pointer;
+
+        .time {
+          background  : #E6E6E6;
+          padding     : 1px 5px 1px 2px;
+          margin-left : 5px;
+          font-size   : 12px;
+        }
+
+      }
+
+    }
+
+  }
+
+  .league-body-clubs {
+    border      : none !important;
+    top         : 0;
+    width       : 100%;
+    cursor      : pointer;
+    padding     : 0;
+    font-weight : 600;
+
+    div {
+      line-height   : 45px;
+      text-align    : center;
+      font-size     : 14px;
+      color         : #4C4949;
+      width         : 25%;
+      background    : #F6F6F6;
+      border-top    : 1px solid white;
+      border-left   : 1px solid white;
+      display       : inline-block;
+      float         : right;
+      overflow      : hidden;
+      white-space   : nowrap;
+      text-overflow : ellipsis;
+    }
+
+    .custom-active {
+      background : #F8F8F8;
+      color      : #000;
+      box-shadow : inset 0 0 20px 1px #ACACAC;
+    }
+  }
+
+  .league-table-title-played > div,
+  .league-table-title-won > div,
+  .league-table-title-drawn > div,
+  .league-table-title-lost > div,
+  .league-table-title-goals-against > div,
+  .league-table-title-goals-for > div,
+  .league-table-title-goals-difference > div,
+  .league-table-title-points > div {
+    transform : rotate(30deg)
+  }
+
+  .league-plan-select-parent {
+    text-align      : center;
+    height          : 30px;
+    text-align-last : center;
+  }
+
+  .league-plan-select {
+    width : 50%;
+    float : right
+  }
+
+  .league-plan-select-result > select {
+    width : 90%;
+  }
+
+  .league-plan-select-result {
+    width : 50%;
+    float : left
+  }
+
+  .league-plan-select > select {
+    width : 90%;
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+    .league-header {
+      height      : 50px;
+      font-size   : 15px !important;
+      line-height : 50px !important;
+    }
+
+    .league-header-news, .league-header-table, .league-header-scorers, .league-header-plan {
+      font-size   : 12px;
+      line-height : 40px;
+    }
+
+    .league-parent {
+      margin-top : 0 !important;
+    }
+
+    .league-header-scope {
+      height : 40px !important;
+    }
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+
+  .video,
+  .broadcast-schedule,
+  .middle-content,
+  .chief-choice,
+  .hot-news,
+  .league-parent {
+    margin-top : 20px !important;
+  }
+
+  .card-img-top {
+    min-height : 260px;
+    height     : auto !important;
+  }
+
+  .newspapers-body {
+    min-height : 250px;
+    height     : auto !important;
+    .carousel {
+      img {
+        min-height : 250px;
+        height     : auto !important;
+      }
+    }
+  }
+
+  .survey-body {
+    height : 400px !important;
+
+    .question {
+      font-size   : 16px !important;
+      line-height : 35px !important;
+    }
+  }
+
+}
+
+////////////////////////////////////////////
+//end leagues
+////////////////////////////////////////////
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .league {
+    height : auto !important;
+  }
+  .news {
+    height        : auto !important;
+    margin-bottom : 0 !important;
+    .news-body {
+      height : auto !important;
+    }
+  }
+}
+
+////////////////////////////////////////////
+//start news
+////////////////////////////////////////////
+
+.last-news-wrapper {
+  margin-top : 5px;
+}
+
+.news {
+  position      : relative;
+  width         : 100%;
+  margin-bottom : 20px;
+
+  .news-header {
+    @include title-style;
+  }
+
+  .news-body {
+    position   : relative;
+    width      : 100%;
+    height     : 680px;
+    background : white;
+    overflow-y : auto;
+
+    a {
+      &:visited {
+        color : grey;
+      }
+    }
+
+    .news-body-item {
+      border-radius : 0 !important;
+      text-align    : right;
+      cursor        : pointer;
+      font-size     : 16px;
+      padding       : 10px 10px;
+
+      .time {
+        background  : #E6E6E6;
+        padding     : 1px 5px 1px 2px;
+        margin-left : 5px;
+        font-size   : 12px;
+      }
+    }
+  }
+
+  .news-footer {
+    background    : $theme-color;
+    color         : white;
+    text-align    : center;
+    line-height   : 40px;
+    font-size     : 15px;
+    width         : 100%;
+    cursor        : pointer;
+    transition    : background-color 1s;
+    margin-top    : 10px;
+    font-weight   : 800;
+    margin-bottom : 30px;
+    &:hover {
+      background : #FF0316;
+    }
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .last-news-wrapper {
+    margin-top : 30px;
+  }
+}
+
+@media only screen and (max-width : 1500px) {
+  .news-body-item {
+    font-size : 15px;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "xl")) {
+
+  .news-body {
+    height : 700px !important;
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+  .news-body {
+    height : 750px !important;
+  }
+
+  .last-news-wrapper,
+  .users-most-followed {
+    margin-top : 35px !important;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .news-body {
+    height : auto;
+  }
+
+  .news-footer {
+    margin-bottom : 0 !important;
+  }
+
+  .last-news-wrapper,
+  .users-most-followed {
+    margin-top : 25px !important;
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+  .news-body-item {
+    font-size : 13px !important;
+  }
+}
+
+////////////////////////////////////////////
+//end news
+////////////////////////////////////////////
+
+.copy-right {
+  margin-top  : 34px;
+  width       : 100%;
+  color       : gold;
+  font-size   : 10px;
+  line-height : 20px;
+  text-align  : center;
+}
+
+////////////////////////////////////////////
+//start navbar
+////////////////////////////////////////////
+
+.main-navbar {
+  direction     : rtl;
+  background    : #F6F6F6;
+  border-bottom : 3px solid #999;
+
+  .login-register {
+    float : left;
+
+    .nav-item {
+      display : inline;
+      float   : left;
+    }
+  }
+
+  .navbar-brand {
+    color  : black !important;
+    cursor : pointer;
+  }
+
+  .dropdown-toggle {
+    margin-right : 10px;
+    position     : relative;
+    top          : 5px;
+  }
+
+  .navbar-user-avatar-sm {
+    color           : black !important;
+    text-decoration : none;
+    cursor          : pointer;
+
+    .dropdown-toggle {
+      margin-right : 10px;
+      position     : relative;
+      top          : 5px;
+    }
+
+    img {
+      width         : 50px;
+      height        : 50px;
+      border        : 2px solid #999;
+      margin-right  : 10px;
+      border-radius : 50%
+    }
+
+    .notifications-badge-side-avatar-sm {
+      background    : red;
+      position      : absolute;
+      left          : 55px;
+      top           : 10px;
+      color         : white;
+      border-radius : 50%;
+      font-weight   : bolder;
+      font-size     : 14px;
+      width         : 23px;
+      height        : 23px;
+      text-align    : center;
+      line-height   : 23px;
+    }
+  }
+
+  .navbar-user-dropdown-sm {
+    margin-left : 70px;
+    text-align  : right;
+    background  : #F1F1F1;
+    padding     : 5px 20px;
+
+    a {
+      padding-top    : 15px;
+      padding-bottom : 15px;
+      cursor         : pointer;
+
+      &:hover {
+        background : lightgrey;
+      }
+    }
+
+    .my-page {
+      color         : black;
+      padding-left  : 8px;
+      padding-right : 8px;
+      background    : #DCDCDC;
+
+      &:hover {
+        background : #BBB;
+      }
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 1px;
+      }
+    }
+
+    .notifications {
+      color         : black;
+      padding-left  : 8px;
+      padding-right : 8px;
+      background    : #DCDCDC;
+
+      &:hover {
+        background : #BBB;
+      }
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 1px;
+      }
+    }
+
+    .logout {
+      color         : black !important;
+      padding-left  : 8px;
+      padding-right : 8px;
+      background    : #DCDCDC;
+
+      &:hover {
+        background : #BBB;
+      }
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 3px;
+      }
+    }
+
+    .notifications-container {
+      display    : none;
+      background : #F2F2F2;
+      width      : 100%;
+      max-height : 500px;
+      padding    : 0 5px;
+      overflow-y : auto;
+
+      .notification-item {
+        background : #E4E4E4;
+        width      : 100%;
+        height     : 115px;
+        margin     : 5px 0;
+        padding    : 5px;
+        position   : relative;
+        overflow   : hidden;
+
+        .notification-item-avatar {
+          border-radius : 50%;
+          margin-top    : 3px;
+          max-width     : 100px;
+        }
+
+        .notification-item-title {
+          direction     : rtl;
+          position      : absolute;
+          top           : 10px;
+          padding-right : 10px;
+          display       : inline;
+          color         : grey;
+        }
+
+        .notification-item-context {
+          position    : absolute;
+          direction   : rtl;
+          width       : 70%;
+          display     : inline;
+          color       : black;
+          top         : 40px;
+          line-height : 28px;
+          margin      : 0 5px;
+          font-size   : 15px;
+          max-height  : 60px;
+          overflow    : hidden;
+          background  : #DBDBDB;
+          padding     : 0 5px;
+        }
+      }
+    }
+
+    .notifications-badge-inside-dropdown-sm {
+      background    : red;
+      margin-right  : 6px;
+      display       : inline-block;
+      color         : white;
+      border-radius : 50%;
+      font-weight   : bolder;
+      font-size     : 14px;
+      width         : 23px;
+      height        : 23px;
+      text-align    : center;
+      line-height   : 23px;
+
+    }
+  }
+
+  .main-nav-items {
+    width       : 70%;
+    line-height : 30px;
+
+    li {
+      overflow : hidden;
+      a {
+        color  : black !important;
+        margin : 0 5px
+      }
+    }
+
+    .live-score {
+      position   : relative;
+      background : darkcyan;
+      color      : white !important;
+    }
+
+    .live-score:after {
+      content         : '';
+      mix-blend-mode  : screen;
+      position        : absolute;
+      top             : 20%;
+      left            : 40%;
+      width           : 30px;
+      height          : 30px;
+      background      : rgba(109, 109, 109, 0.5);
+      opacity         : 0;
+      border-radius   : 100%;
+      animation       : ripple 2s ease-out infinite;
+      animation-delay : 2s;
+    }
+
+    @keyframes ripple {
+      0%, 35% {
+        transform : scale(0);
+        opacity   : 1;
+      }
+      50% {
+        transform : scale(1.5);
+        opacity   : 0.8;
+      }
+      100% {
+        opacity   : 0;
+        transform : scale(4);
+      }
+    }
+
+  }
+
+  .navbar-user-avatar-lg {
+    text-decoration : none;
+    margin          : 0 20px;
+    color           : black !important;
+    cursor          : pointer;
+
+    img {
+      width         : 50px;
+      height        : 50px;
+      border        : 2px solid #999;
+      margin-right  : 10px;
+      border-radius : 50%;
+    }
+
+    .dropdown-toggle {
+      margin-right : 10px;
+      position     : relative;
+      top          : 5px;
+    }
+
+    .notifications-badge-side-avatar-lg {
+      background    : red;
+      position      : absolute;
+      left          : 60px;
+      display       : inline-block;
+      color         : white;
+      border-radius : 50%;
+      font-weight   : bolder;
+      font-size     : 14px;
+      width         : 23px;
+      height        : 23px;
+      text-align    : center;
+      line-height   : 23px;
+
+    }
+  }
+
+  .navbar-user-dropdown-lg {
+    text-align  : right;
+    direction   : rtl;
+    background  : #F1F1F1;
+    margin-left : 10px;
+    width       : 420px;
+    border      : 3px solid #999;
+
+    a {
+      padding-top    : 15px;
+      padding-bottom : 15px;
+      cursor         : pointer;
+      color          : black !important;
+
+      &:hover {
+        background : lightgrey;
+      }
+    }
+
+    .my-page {
+      padding-left  : 8px;
+      padding-right : 8px;
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 1px;
+      }
+    }
+
+    .notifications {
+      padding-left  : 8px;
+      padding-right : 8px;
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 1px;
+      }
+    }
+
+    .logout {
+      padding-left  : 8px;
+      padding-right : 8px;
+
+      i {
+        padding-left : 10px;
+        position     : relative;
+        top          : 3px;
+      }
+    }
+
+    .notifications-container {
+      display    : none;
+      background : #F2F2F2;
+      width      : 100%;
+      max-height : 500px;
+      padding    : 0 5px;
+      overflow-y : auto;
+
+      .notification-item {
+        background : #E4E4E4;
+        width      : 100%;
+        height     : 115px;
+        margin     : 5px 0;
+        padding    : 5px;
+        position   : relative;
+        overflow   : hidden;
+
+        .notification-item-avatar {
+          border-radius : 50%;
+          margin-top    : 3px;
+          max-width     : 100px;
+        }
+
+        .notification-item-title {
+          direction     : rtl;
+          position      : absolute;
+          top           : 10px;
+          padding-right : 10px;
+          display       : inline;
+          color         : grey;
+        }
+
+        .notification-item-context {
+          position    : absolute;
+          direction   : rtl;
+          width       : 70%;
+          display     : inline;
+          color       : black;
+          top         : 40px;
+          line-height : 28px;
+          margin      : 0 5px;
+          font-size   : 15px;
+          max-height  : 60px;
+          overflow    : hidden;
+          background  : #DBDBDB;
+          padding     : 0 5px;
+        }
+      }
+    }
+
+    .notifications-badge-inside-dropdown-lg {
+      background    : red;
+      margin-right  : 6px;
+      color         : white;
+      border-radius : 50%;
+      display       : inline-block;
+      font-weight   : bolder;
+      font-size     : 14px;
+      width         : 23px;
+      height        : 23px;
+      text-align    : center;
+      line-height   : 23px;
+      display       : inline-block;
+    }
+  }
+
+  .main-nav-form-inline {
+    float         : right;
+    padding-right : 0;
+    width         : 100%;
+    line-height   : 30px;
+    color         : black;
+    background    : inherit;
+    border        : none;
+
+    .navbar-close-form {
+      font-size  : 25px;
+      width      : 4%;
+      background : none;
+      color      : black;
+      box-shadow : none !important;
+    }
+
+    .navbar-input-form {
+      display    : inline;
+      text-align : right;
+      font-size  : 20px;
+      width      : 75%;
+      background : inherit;
+      border     : none;
+      color      : black;
+      box-shadow : none !important;
+    }
+
+    .navbar-submit-form {
+      box-shadow  : none !important;
+      line-height : 30px;
+      color       : black;
+      background  : inherit;
+      font-size   : 25px;
+      text-align  : left;
+      width       : 20%;
+    }
+
+  }
+
+  .btn-light {
+    background : #DCDCDC;
+
+    &:hover {
+      background : #BBB;
+    }
+  }
+
+  .no-notification {
+    text-align  : center;
+    line-height : 100px;
+    font-size   : 20px;
+    background  : white;
+    width       : 100%;
+    height      : 115px;
+    margin      : 5px 0;
+    padding     : 5px;
+    position    : relative;
+    overflow    : hidden;
+  }
+
+  .all-notifications {
+    line-height : 30px;
+    text-align  : center;
+    background  : #E2E2E2;
+    width       : 100%;
+    height      : 40px;
+    margin      : 5px 0;
+    padding     : 5px;
+    position    : relative;
+    overflow    : hidden;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+  .form-inline {
+    margin    : 0;
+    flex-flow : inherit;
+    float     : left !important;
+  }
+
+  .main-nav-form-inline {
+    float         : right;
+    padding-right : 0;
+  }
+
+  .main-nav-items {
+    text-align    : right;
+    width         : auto;
+    clear         : both;
+    padding-right : 5px;
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .main-navbar {
+    .navbar-brand {
+      margin : 0;
+    }
+
+    .navbar-input-form {
+      font-size : 15px !important;
+    }
+
+    .main-nav-items {
+      width       : 100% !important;
+      padding-top : 10px;
+
+      li > a {
+        border      : none;
+        line-height : 30px;
+        font-size   : 15px;
+        display     : block;
+        text-align  : right;
+        padding     : 5px 10px !important;
+      }
+
+      .live-score:after {
+        top    : 0%;
+        right  : 30%;
+        left   : 0;
+        width  : 70px;
+        height : 70px;
+      }
+    }
+
+    .navbar-user-dropdown-sm {
+      width         : 100%;
+      margin        : 0 !important;
+      max-height    : 550px;
+      overflow-y    : auto;
+      border        : none;
+      border-radius : 0;
+
+      a {
+        padding     : 5px 10px !important;
+        line-height : 30px !important;
+        font-size   : 15px !important;
+      }
+    }
+
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+
+  .main-navbar {
+
+    padding-top    : 2px;
+    padding-bottom : 2px;
+
+    .navbar-brand {
+      font-size : 17px;
+    }
+
+    .main-nav-form-inline {
+      input {
+        margin-right : 10px;
+      }
+    }
+
+    .navbar-input-form {
+      font-size : 17px !important;
+    }
+
+    .dropdown-divider {
+      margin : 0.35rem 0;
+    }
+
+    .navbar-user-dropdown-sm {
+      padding : 0.5rem 1.65rem;
+    }
+  }
+
+}
+
+////////////////////////////////////////////
+//end navbar
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+//start instagram
+////////////////////////////////////////////
+
+.instagram-container {
+  margin-top : -15px;
+  max-width  : 1600px;
+
+  .post-instagram-title {
+    div {
+      background    : $instagram-bg;
+      font-weight   : 700;
+      height        : 50px;
+      width         : 100%;
+      text-align    : right;
+      padding-right : 10px;
+      line-height   : 50px;
+      font-size     : 20px;
+      color         : white;
+    }
+  }
+
+  .post-instagram-body {
+    .row {
+      width : 100%;
+      .post-instagram-wrapper {
+        position   : relative;
+        cursor     : pointer;
+        overflow   : hidden;
+        margin-top : 20px;
+        direction  : rtl;
+        text-align : right;
+
+        .post-layout {
+          background : linear-gradient(to bottom, transparent 0%, #000 100%);
+          position   : absolute;
+          bottom     : 0;
+          top        : 0;
+          right      : 0;
+          z-index    : 1;
+          width      : 100%;
+          height     : 100%;
+        }
+
+        .post-instagram-img {
+          width           : 100%;
+          height          : 260px;
+          background-size : cover;
+          background      : #C3C3C3 url("/images/preloader.gif") no-repeat center;
+          transition      : transform 1s;
+        }
+
+        .post-instagram-caption {
+          width       : 100%;
+          z-index     : 2;
+          position    : absolute;
+          bottom      : 0;
+          color       : white;
+          padding     : 10px;
+          line-height : 28px;
+          font-size   : 14px;
+        }
+
+        .post-instagram-like-wrapper {
+          position : absolute;
+          z-index  : 2;
+          top      : 0;
+          left     : 0;
+          .post-instagram-like {
+            float       : left;
+            min-width   : 45px;
+            background  : rgba(0, 0, 0, 0.7);
+            color       : white;
+            line-height : 20px;
+            font-size   : 13px;
+            padding     : 5px 7px;
+            &:hover {
+              color       : green;
+              font-weight : 700;
+            }
+            i {
+              margin-right : 5px;
+            }
+          }
+          .post-instagram-dislike {
+            float       : left;
+            min-width   : 45px;
+            background  : rgba(0, 0, 0, 0.7);
+            color       : white;
+            line-height : 20px;
+            font-size   : 13px;
+            padding     : 5px 7px;
+            &:hover {
+              color       : red;
+              font-weight : 700;
+            }
+            i {
+              margin-right : 5px;
+            }
+          }
+          .post-liked {
+            background : green;
+            color      : white !important;
+          }
+          .post-disliked {
+            background : red;
+            color      : white !important;
+          }
+        }
+
+        .post-instagram-author {
+          z-index     : 2;
+          display     : block;
+          position    : absolute;
+          top         : 0;
+          background  : rgba(0, 0, 0, 0.7);
+          color       : white;
+          line-height : 20px;
+          font-size   : 13px;
+          padding     : 5px 7px;
+          transition  : background-color 0.7s;
+          &:hover {
+            color       : cyan !important;
+            font-weight : 700;
+          }
+        }
+
+        &:hover {
+          .post-instagram-author {
+            background : rgb(0, 0, 0);
+          }
+          .post-instagram-caption {
+            //color : $theme-color;
+            //font-weight : 450;
+          }
+          .post-instagram-img {
+            transform : scale(1.05);
+          }
+        }
+
+      }
+    }
+  }
+
+  .tweets-container {
+    .mt-1 {
+      overflow : auto;
+      height   : 820px;
+      .last-tweets-item {
+        margin-top    : 10px;
+        border-radius : 0 !important;
+
+        .card-body {
+          padding : 15px;
+        }
+
+        a {
+          color : #2C2C2C;
+          &:hover {
+            color : $theme-color !important;
+          }
+        }
+
+        .tweet-author {
+          padding-bottom : 0;
+          a {
+            float : right;
+            img {
+              height      : 35px;
+              margin-left : 3px
+            }
+          }
+        }
+
+        .tweet-content {
+          padding-top : 10px;
+          text-align  : right;
+
+          .tweet-toolbar {
+            table-layout : fixed;
+            width        : 100%;
+            text-align   : center;
+            font-size    : 14px;
+            line-height  : 28px;
+            background   : #FBFBFB;
+
+            a {
+              display : block;
+            }
+
+            .tweet-copy {
+              padding     : 5px;
+              line-height : 25px;
+              i {
+                color : dimgray
+              }
+            }
+
+            .tweet-comment {
+              padding : 5px;
+            }
+
+            .tweet-like {
+              padding : 5px;
+              &:hover {
+                a {
+                  color : green !important;
+                }
+              }
+            }
+
+            .tweet-dislike {
+              padding     : 5px;
+              line-height : 25px;
+              &:hover {
+                a {
+                  color : red !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .post-instagram-footer {
+    div {
+      background  : $instagram-bg;
+      height      : 50px;
+      font-weight : 700;
+      width       : 100%;
+      text-align  : center;
+      line-height : 50px;
+      font-size   : 15px;
+      color       : white;
+      margin-top  : 20px;
+      cursor      : pointer;
+      transition  : background-color 0.5s;
+      &:hover {
+        background-color : #000;
+      }
+    }
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "xl")) {
+    .post-instagram-body {
+      padding : 10px !important;
+    }
+    .post-instagram-img {
+      height : 220px !important;
+    }
+    .tweets-container {
+      padding : 10px !important;
+    }
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+    .post-instagram-img {
+      height : 415px !important;
+    }
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+    .post-instagram-img {
+      height : 220px !important;
+    }
+    .tweets-container {
+      .mt-1 {
+        height : auto;
+      }
+    }
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "sm")) {
+    .post-instagram-body {
+      padding : 0 !important;
+    }
+    .post-instagram-footer {
+      padding : 0 !important;
+      div {
+        margin-top  : 10px;
+        font-size   : 15px;
+        line-height : 40px;
+        height      : 40px;
+      }
+    }
+    .post-instagram-title {
+      div {
+        font-size   : 17px;
+        height      : 45px;
+        line-height : 45px;
+      }
+    }
+    .post-instagram-img {
+      height : 375px !important;
+    }
+    .tweets-container {
+      font-size : 14px;
+    }
+  }
+
+  @media only screen and (max-width : 465px) {
+    .post-instagram-img {
+      height : 360px !important;
+    }
+  }
+
+  @media only screen and (min-width : map-get($grid-breakpoints, "lg")) {
+    .post-instagram-body-ajax {
+      .row {
+        .col-12 {
+          max-width : 20% !important;
+          flex      : 48 0 20% !important;
+          .post-instagram-img {
+            height : 285px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////
+//end instagram
+////////////////////////////////////////////
+
+.button-new-post {
+  z-index       : 2;
+  position      : fixed;
+  bottom        : 20px;
+  right         : 20px;
+  width         : 70px;
+  height        : 70px;
+  background    : $theme-color;
+  color         : white !important;
+  font-size     : 25px;
+  line-height   : 75px;
+  border-radius : 50%;
+  text-align    : center;
+
+  &:hover {
+    color : white !important;
+  }
+
+}
+
+.button-new-news,
+.button-new-tweet,
+.button-new-user-content {
+  z-index         : 1;
+  position        : fixed;
+  bottom          : 20px;
+  right           : 20px;
+  width           : 70px;
+  height          : 70px;
+  background      : $theme-color;
+  color           : white !important;
+  font-size       : 17px;
+  line-height     : 70px;
+  border-radius   : 50%;
+  text-align      : center;
+  text-decoration : none !important;
+  font-weight     : 700;
+
+  &:hover {
+    color : white !important;
+  }
+
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .button-new-post {
+    width       : 50px;
+    height      : 50px;
+    font-size   : 20px;
+    line-height : 52px;
+  }
+
+  .button-new-tweet,
+  .button-new-user-content {
+    width       : 50px;
+    height      : 50px;
+    font-size   : 14px;
+    line-height : 48px;
+  }
+
+  .button-new-news {
+    width       : 50px;
+    height      : 50px;
+    font-size   : 16px;
+    line-height : 50px;
+  }
+}
+
+////////////////////////////////////////////
+//hashtag navbar
+////////////////////////////////////////////
+
+.hashtag-navbar {
+  max-width     : 1580px;
+  text-align    : right;
+  overflow      : hidden;
+  margin-top    : 20px;
+  background    : #CBCBCB;
+  padding       : 5px 5px 0 5px;
+  border-radius : 27px;
+  line-height   : 40px;
+
+  .title {
+    background  : $theme-color;
+    color       : white;
+    margin      : -5px -5px -5px 0;
+    padding     : 5px 20px;
+    font-size   : 17px;
+    font-weight : bold;
+    float       : right
+  }
+
+  .hashtag-wrapper::-webkit-scrollbar {
+    width      : 0; /* remove scrollbar space */
+    background : transparent; /* optional: just make scrollbar invisible */
+    height     : 5px;
+  }
+
+  .hashtag-wrapper::-webkit-scrollbar-thumb {
+    background : $theme-color;
+    border-top : solid 1px #CBCBCB;
+  }
+
+  .hashtag-wrapper {
+    white-space : nowrap;
+    overflow-x  : scroll;
+
+    .hashtag {
+      border-radius : 27px;
+      padding       : 5px 10px;
+      margin        : 0 5px;
+      background    : #F8F8F8;
+    }
+  }
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "lg")) {
+  .hashtag-navbar {
+    border-radius : 0;
+    line-height   : 30px;
+    width         : auto;
+
+    .title {
+      margin     : -5px -5px 5px -5px;
+      padding    : 5px 15px;
+      font-size  : 15px;
+      width      : 103%;
+      text-align : center;
+    }
+
+    .hashtag-wrapper::-webkit-scrollbar {
+      height : 7px;
+    }
+
+    .hashtag-wrapper::-webkit-scrollbar-thumb {
+      border-top : solid 3px #CBCBCB;
+    }
+
+    .hashtag-wrapper {
+      width : 100%;
+
+      .hashtag {
+        margin    : 5px;
+        font-size : 15px;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+////////////////////////    alertify     /////////////////////////
+//////////////////////////////////////////////////////////////////
+
+.ajs-message {
+  font-size   : 15px;
+  line-height : 25px;
+  padding     : 17px;
+  text-shadow : none;
+  font-family : IRANSANS, sans-serif;
+  text-align  : right;
+  direction   : rtl;
+  font-weight : bolder;
+  width       : 450px !important;
+  left        : 470px !important;
+}
+
+@media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+  .ajs-message {
+    width : 250px !important;
+    left  : 270px !important;
+  }
+}
+
+.ajs-error {
+  color      : white !important;
+  background : $theme-color !important;
+}
+
+.ajs-warning {
+  color      : white !important;
+  background : $theme-color !important;
+}
+
+//////////////////////////////////////////////////////////////////
+////////////////////    infinite-scroll     //////////////////////
+//////////////////////////////////////////////////////////////////
+
+.infinite-loading {
+  text-align : center;
+  img {
+    height : 50px;
+  }
+}
+
+//////////////////////////////////////////////////////////////////
+/////////////////////     alertify js     ////////////////////////
+//////////////////////////////////////////////////////////////////
+
+.ajs-dialog {
+  direction   : rtl;
+  text-align  : right;
+  font-family : IRANSANS;
+
+  .ajs-commands {
+    left  : 4px;
+    right : auto;
+  }
+
+  .ajs-header {
+    background : #F4F4F4;
+  }
+
+  .ajs-content {
+    padding : 16px 0 16px 0 !important;
+  }
+
+  .ajs-footer {
+    background : #F4F4F4;
+  }
+}

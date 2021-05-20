@@ -1,0 +1,85 @@
+@import "app";
+
+.wrapper {
+  direction : rtl;
+
+  .card-link {
+    text-decoration : none !important;
+    color           : inherit !important;
+
+    .avatar-border {
+      display       : inline-block;
+      border-radius : 50%;
+      padding       : 3px;
+      background    : -webkit-linear-gradient(45deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%);
+      height        : 100px;
+
+      img {
+        width         : 90px;
+        background    : #C3C3C3 url("/images/preloader.gif") no-repeat center;
+        height        : 90px;
+        border-radius : 50%;
+        height        : 100%;
+      }
+    }
+
+    .name {
+      display  : inline-grid;
+      position : relative;
+      bottom   : 25px;
+
+      .text-muted {
+        direction : ltr;
+      }
+    }
+  }
+
+  button {
+    position : relative;
+    top      : 28px;
+  }
+
+  .statistic-sm {
+    width        : 100%;
+    background   : #FBFBFB;
+    height       : 80px;
+    text-align   : center;
+    font-size    : 14px;
+    table-layout : fixed;
+    border       : 2px solid #E2E2E2;
+    border-left  : none;
+    border-right : none;
+  }
+
+  @media only screen and (max-width : map-get($grid-breakpoints, "md")) {
+    .custom-container {
+      margin-top : 0;
+    }
+
+    .card-link {
+      display : block;
+    }
+
+    .card-body {
+      .name {
+        bottom : 35px;
+        .text-muted {
+          margin-bottom : 5px;
+        }
+        h4 {
+          font-size : 1.25rem;
+        }
+      }
+    }
+
+    button {
+      font-size : 11px;
+      float     : none !important;
+      position  : relative;
+      top       : -30px;
+      right     : 124px;
+      padding   : 4px;
+    }
+
+  }
+}
