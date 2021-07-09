@@ -9,26 +9,26 @@
 
 <div align="center">
 
-    ![Welcome Page](storage/images/welcome-page.jpg?raw=true "Welcome Page")
+![Welcome Page](storage/images/welcome-page.jpg?raw=true "Welcome Page")
 
-    <br/>
+<br/>
 
-    ![Post Page](storage/images/post-page.jpg?raw=true "Post Page")
+![Post Page](storage/images/post-page.jpg?raw=true "Post Page")
 
-    <br/>
+<br/>
 
-    ![Create Page](storage/images/create-page.jpg?raw=true "Create Page")
+![Create Page](storage/images/create-page.jpg?raw=true "Create Page")
 
-    <br/>
+<br/>
 
-    ![User Page](storage/images/user-page.jpg?raw=true "User Page")
+![User Page](storage/images/user-page.jpg?raw=true "User Page")
 
-    <br/>
+<br/>
 
-    ![Edit Page](storage/images/edit-page.jpg?raw=true "Edit Page")
+![Edit Page](storage/images/edit-page.jpg?raw=true "Edit Page")
 
-    <br/>
+<br/>
 
-    ![Login Page](storage/images/login-page.jpg?raw=true "Login Page")
+![Login Page](storage/images/login-page.jpg?raw=true "Login Page")
 
 </div>
