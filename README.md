@@ -1,9 +1,7 @@
-<h3 lang="fa" align="right"> در حال بازنویسی </h3> 
-
 <div align="center">
 
 ![Welcome Page](storage/images/icon.png?raw=true "icon")
-<h2 lang="fa" style="margin-top: -50px">فوتبال گرام</h2>
+<h2 lang="fa" style="margin-top: -50px">فوتبال گرام (در حال بازنویسی)</h2>
 </div>
 
 <h3 lang="fa" align="right"> تصاویری از داخل اپلیکیشن </h3> 
