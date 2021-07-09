@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c34504f58018092934b8673380389c61",
+    "content-hash": "7991c4e575f113ee05b85010ec0918d4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -261,16 +261,16 @@
         },
         {
             "name": "cviebrock/eloquent-sluggable",
-            "version": "dev-master",
+            "version": "8.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alirezadp10/eloquent-sluggable.git",
-                "reference": "0464dd4830e96bf28b0103201784ae6d4853b8fd"
+                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
+                "reference": "16e21db24d80180f870c3c7c4faf3d3af23f4117"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alirezadp10/eloquent-sluggable/zipball/0464dd4830e96bf28b0103201784ae6d4853b8fd",
-                "reference": "0464dd4830e96bf28b0103201784ae6d4853b8fd",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/16e21db24d80180f870c3c7c4faf3d3af23f4117",
+                "reference": "16e21db24d80180f870c3c7c4faf3d3af23f4117",
                 "shasum": ""
             },
             "require": {
@@ -287,7 +287,6 @@
                 "orchestra/testbench": "^6.0",
                 "phpunit/phpunit": "^9.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -301,20 +300,7 @@
                     "Cviebrock\\EloquentSluggable\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Cviebrock\\EloquentSluggable\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "fresh": [
-                    "rm -rf vendor composer.lock",
-                    "composer install"
-                ],
-                "tests": [
-                    "php vendor/bin/phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -335,15 +321,16 @@
                 "sluggable"
             ],
             "support": {
-                "source": "https://github.com/alirezadp10/eloquent-sluggable/tree/master"
+                "issues": "https://github.com/cviebrock/eloquent-sluggable/issues",
+                "source": "https://github.com/cviebrock/eloquent-sluggable/tree/8.0.8"
             },
             "funding": [
                 {
-                    "type": "github",
-                    "url": "https://github.com/cviebrock"
+                    "url": "https://github.com/cviebrock",
+                    "type": "github"
                 }
             ],
-            "time": "2021-06-25T10:53:31+00:00"
+            "time": "2021-06-12T01:05:33+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -9215,6 +9202,51 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
+            "name": "styleci/cli",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/StyleCI/CLI.git",
+                "reference": "da00b9c977f637d62a59d5132776c0c8a95cb25c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/StyleCI/CLI/zipball/da00b9c977f637d62a59d5132776c0c8a95cb25c",
+                "reference": "da00b9c977f637d62a59d5132776c0c8a95cb25c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zlib": "*",
+                "php": "^7.2.5 || ^8.0"
+            },
+            "suggest": {
+                "ext-curl": "Required for high performance HTTP transport"
+            },
+            "bin": [
+                "bin/styleci"
+            ],
+            "type": "library",
+            "extra": {
+                "bin-dir": "bin"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "StyleCI",
+                    "email": "support@styleci.io"
+                }
+            ],
+            "description": "The CLI tool for StyleCI",
+            "support": {
+                "source": "https://github.com/StyleCI/CLI/tree/v1.1.1"
+            },
+            "time": "2021-05-16T09:40:14+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.2.0",
             "source": {
@@ -9267,9 +9299,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "cviebrock/eloquent-sluggable": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

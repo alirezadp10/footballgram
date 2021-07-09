@@ -25,10 +25,11 @@ class Tweet extends Model
     {
         return [
             'slug' => [
-                'method' => function () {
+                'method'   => function () {
                     return Str::random(20);
                 },
-            ],
+                'onUpdate' => true,
+          ],
         ];
     }
 

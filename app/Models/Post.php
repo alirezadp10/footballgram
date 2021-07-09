@@ -72,7 +72,8 @@ class Post extends Model
     {
         return [
             'slug' => [
-                'source' => 'main_title',
+                'source'   => 'main_title',
+                'onUpdate' => true,
             ],
         ];
     }
