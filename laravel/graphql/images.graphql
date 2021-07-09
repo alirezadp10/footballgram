@@ -1,9 +1,0 @@
-type Image {
-    id: ID
-    original: String
-    xs: String
-    sm: String
-    md: String
-    lg: String
-    xl: String
-}
