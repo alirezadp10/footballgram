@@ -1,6 +1,4 @@
-# under Refactoring ...
-
-### previous version exist on stable-version branch 
+<h3 lang="fa" align="right"> در حال بازنویسی </h3> 
 
 <div align="center">
 
