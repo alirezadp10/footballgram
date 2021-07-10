@@ -1,6 +1,11 @@
 <div align="center">
-    <img src="/storage/images/icon.png?raw=false" alt="Welcome Page" title="icon" style="transform: scale(3.5);">
-    <h2 lang="fa" style="margin-top: -50px">فوتبال گرام (در حال بازنویسی)</h2>
+    
+<img src="/storage/images/icon.png?raw=false" alt="Welcome Page" title="icon" style="transform: scale(3.5);">
+
+<h2 lang="fa" style="margin-top: -50px">فوتبال گرام (در حال بازنویسی)</h2>
+    
+[![Build Status](https://travis-ci.com/alirezadp10/footballgram.svg?branch=master)](https://travis-ci.com/alirezadp10/footballgram)
+
 </div>
 
 <h3 lang="fa" align="right"> تصاویری از داخل اپلیکیشن </h3> 
