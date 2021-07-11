@@ -8,7 +8,7 @@
 
 </div>
 
-<h3 lang="fa" align="right"> some SC from appliation </h3> 
+<h3> some SC from appliation </h3> 
 
 <br/>
 
