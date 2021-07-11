@@ -3,10 +3,8 @@
 <img src="/storage/images/icon.png?raw=false" alt="Welcome Page" title="icon" style="transform: scale(3.5);">
 
 <h2 lang="fa" style="margin-top: -50px">فوتبال گرام (در حال بازنویسی)</h2>
-    
-[![Build Status](https://travis-ci.com/alirezadp10/footballgram.svg?branch=master)](https://travis-ci.com/alirezadp10/footballgram)
 
-[![StyleCI](https://github.styleci.io/repos/368675053/shield?branch=master)](https://github.styleci.io/repos/368675053?branch=master)
+[![Build Status](https://travis-ci.com/alirezadp10/footballgram.svg?branch=master)](https://travis-ci.com/alirezadp10/footballgram) [![StyleCI](https://github.styleci.io/repos/368675053/shield?branch=master)](https://github.styleci.io/repos/368675053?branch=master)
 
 </div>
 
