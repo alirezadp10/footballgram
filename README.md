@@ -6,6 +6,8 @@
     
 [![Build Status](https://travis-ci.com/alirezadp10/footballgram.svg?branch=master)](https://travis-ci.com/alirezadp10/footballgram)
 
+[![StyleCI](https://github.styleci.io/repos/368675053/shield?branch=master)](https://github.styleci.io/repos/368675053?branch=master)
+
 </div>
 
 <h3 lang="fa" align="right"> تصاویری از داخل اپلیکیشن </h3> 
