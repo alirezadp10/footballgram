@@ -14,7 +14,8 @@ use Tests\TestCase;
 
 class UpdatePostTest extends TestCase
 {
-    use RefreshDatabase,WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     /**
      * @test
@@ -23,9 +24,9 @@ class UpdatePostTest extends TestCase
     {
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.edit',$post->slug))->assertRedirect('login');
+        $this->get(route('posts.edit', $post->slug))->assertRedirect('login');
 
-        $this->patch(route('posts.update',$post->slug),[])->assertRedirect('login');
+        $this->patch(route('posts.update', $post->slug), [])->assertRedirect('login');
     }
 
     /**
@@ -37,9 +38,9 @@ class UpdatePostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.edit',$post->slug))->assertForbidden();
+        $this->get(route('posts.edit', $post->slug))->assertForbidden();
 
-        $this->patch(route('posts.update',$post->slug),[])->assertForbidden();
+        $this->patch(route('posts.update', $post->slug), [])->assertForbidden();
     }
 
     /**
@@ -53,12 +54,12 @@ class UpdatePostTest extends TestCase
 
         $main_title = $this->faker->sentence;
 
-        $slug = SlugService::createSlug(Post::class,'slug',$main_title);
+        $slug = SlugService::createSlug(Post::class, 'slug', $main_title);
 
-        $this->patch(route('posts.update',$post->slug),compact('main_title'))
-             ->assertRedirect(route('posts.show',$slug));
+        $this->patch(route('posts.update', $post->slug), compact('main_title'))
+             ->assertRedirect(route('posts.show', $slug));
 
-        $this->assertEquals($main_title,Post::first()->main_title);
+        $this->assertEquals($main_title, Post::first()->main_title);
     }
 
     /**
@@ -72,9 +73,9 @@ class UpdatePostTest extends TestCase
 
         $secondary_title = $this->faker->sentence;
 
-        $this->patch(route('posts.update',$post->slug),compact('secondary_title'));
+        $this->patch(route('posts.update', $post->slug), compact('secondary_title'));
 
-        $this->assertEquals($secondary_title,Post::first()->secondary_title);
+        $this->assertEquals($secondary_title, Post::first()->secondary_title);
     }
 
     /**
@@ -88,9 +89,9 @@ class UpdatePostTest extends TestCase
 
         $context = $this->faker->text();
 
-        $this->patch(route('posts.update',$post->slug),compact('context'));
+        $this->patch(route('posts.update', $post->slug), compact('context'));
 
-        $this->assertEquals($context,Post::first()->context);
+        $this->assertEquals($context, Post::first()->context);
     }
 
     /**
@@ -106,11 +107,11 @@ class UpdatePostTest extends TestCase
 
         $image = UploadedFile::fake()->image('new-image.jpg');
 
-        $this->patch(route('posts.update',$post->slug),compact('image'));
+        $this->patch(route('posts.update', $post->slug), compact('image'));
 
-        $path = 'images/post/' . $image->hashName();
+        $path = 'images/post/'.$image->hashName();
 
-        $this->assertEquals($path,Post::first()->image);
+        $this->assertEquals($path, Post::first()->image);
 
         Storage::disk('public')->assertExists($path);
 
@@ -126,7 +127,7 @@ class UpdatePostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->patch(route('posts.update','foobar'))->assertNotFound();
+        $this->patch(route('posts.update', 'foobar'))->assertNotFound();
     }
 
     /**
@@ -142,17 +143,17 @@ class UpdatePostTest extends TestCase
 
         event(new DetectTagsEvent($post));
 
-        $context = "Official: Juventus signed with Ronaldo.";
+        $context = 'Official: Juventus signed with Ronaldo.';
 
-        $this->patch(route('posts.update',$post->slug),compact('context'));
+        $this->patch(route('posts.update', $post->slug), compact('context'));
 
-        $this->assertDatabaseMissing('tags',[
+        $this->assertDatabaseMissing('tags', [
             'name'  => 'Official',
             'count' => '1',
-        ])->assertDatabaseMissing('tags',[
-            'name' => 'Juventus',
+        ])->assertDatabaseMissing('tags', [
+            'name'  => 'Juventus',
             'count' => '1',
-        ])->assertDatabaseMissing('tags',[
+        ])->assertDatabaseMissing('tags', [
             'name'  => 'Ronaldo',
             'count' => '1',
         ]);
@@ -167,17 +168,17 @@ class UpdatePostTest extends TestCase
 
         $post = Post::factory(['context' => '#Official: #Juventus signed with #Ronaldo.'])->released()->create();
 
-        $context = "#Unofficial: #RealMadrid signed with #Messi.";
+        $context = '#Unofficial: #RealMadrid signed with #Messi.';
 
-        $this->patch(route('posts.update',$post->slug),compact('context'));
+        $this->patch(route('posts.update', $post->slug), compact('context'));
 
-        $this->assertDatabaseHas('tags',[
+        $this->assertDatabaseHas('tags', [
             'name'  => 'Unofficial',
             'count' => '1',
-        ])->assertDatabaseHas('tags',[
-            'name' => 'RealMadrid',
+        ])->assertDatabaseHas('tags', [
+            'name'  => 'RealMadrid',
             'count' => '1',
-        ])->assertDatabaseHas('tags',[
+        ])->assertDatabaseHas('tags', [
             'name'  => 'Messi',
             'count' => '1',
         ]);

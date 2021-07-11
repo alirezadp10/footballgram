@@ -37,11 +37,11 @@ class AuthServiceProvider extends ServiceProvider
         ];
 
         foreach ($userActions as $userAction) {
-            Gate::define($userAction,function ($user) use ($userAction) {
+            Gate::define($userAction, function ($user) use ($userAction) {
                 return DB::table('users_abilities')
-                         ->join('abilities','abilities.id','users_abilities.ability_id')
-                         ->where('users_abilities.user_id',$user->id)
-                         ->where('abilities.title',$userAction)
+                         ->join('abilities', 'abilities.id', 'users_abilities.ability_id')
+                         ->where('users_abilities.user_id', $user->id)
+                         ->where('abilities.title', $userAction)
                          ->count();
             });
         }

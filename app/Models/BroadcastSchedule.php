@@ -20,6 +20,6 @@ class BroadcastSchedule extends Model
 
     public function channel(): BelongsTo
     {
-        return $this->belongsTo(BroadcastChannel::class,'broadcast_channel_id');
+        return $this->belongsTo(BroadcastChannel::class, 'broadcast_channel_id');
     }
 }

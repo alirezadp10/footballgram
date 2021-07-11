@@ -13,7 +13,7 @@ class TweetRequest extends FormRequest
      */
     public function authorize()
     {
-        return FALSE;
+        return false;
     }
 
     /**

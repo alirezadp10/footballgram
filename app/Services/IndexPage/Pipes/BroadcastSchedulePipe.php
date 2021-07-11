@@ -7,7 +7,7 @@ use Facades\App\Repositories\Contracts\BroadcastScheduleRepository;
 
 class BroadcastSchedulePipe
 {
-    public function handle($data,Closure $next)
+    public function handle($data, Closure $next)
     {
         $data['broadcastSchedule'] = BroadcastScheduleRepository::all();
 

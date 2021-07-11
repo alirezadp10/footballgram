@@ -13,7 +13,7 @@ class CreateFollowersTable extends Migration
      */
     public function up()
     {
-        Schema::create('followers',function (Blueprint $table) {
+        Schema::create('followers', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('follower_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('follow_up_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();

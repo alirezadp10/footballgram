@@ -13,6 +13,7 @@ class DetectMentionsListener
      * Handle the event.
      *
      * @param object $event
+     *
      * @return void
      */
     public function handle($event)
@@ -22,18 +23,19 @@ class DetectMentionsListener
         ]);
 
         array_map(
-            fn($user) => $user->notify(new MentionNotification($event->contextable())),
+            fn ($user) => $user->notify(new MentionNotification($event->contextable())),
             $this->detectedUsers
         );
     }
 
     /**
      * @param string $context
+     *
      * @return string
      */
     private function convertContext(string $context): string
     {
-        return preg_replace_callback("/(\B@)(\w+)/u",[$this,'checkExist'],$context);
+        return preg_replace_callback("/(\B@)(\w+)/u", [$this, 'checkExist'], $context);
     }
 
     private function checkExist($mention)
@@ -42,7 +44,7 @@ class DetectMentionsListener
 
         $user = User::whereUsername($username)->first();
 
-        if ($user == NULL) {
+        if ($user == null) {
             return $original;
         }
 

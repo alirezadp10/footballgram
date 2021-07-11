@@ -17,11 +17,11 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['post.show','tweet.show'],PostComposer::class);
+        View::composer(['post.show', 'tweet.show'], PostComposer::class);
 
-        View::composer(['sections.navbar'],NavbarComposer::class);
+        View::composer(['sections.navbar'], NavbarComposer::class);
 
-        View::composer(['layouts.app','index.index'],ButtonNewPostComposer::class);
+        View::composer(['layouts.app', 'index.index'], ButtonNewPostComposer::class);
     }
 
     /**

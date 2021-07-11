@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BroadcastScheduleRequest;
-use App\Models\BroadcastChannel;
-use Facades\App\Repositories\Contracts\BroadcastScheduleRepository;
 use Facades\App\Repositories\Contracts\BroadcastChannelRepository;
+use Facades\App\Repositories\Contracts\BroadcastScheduleRepository;
 use Morilog\Jalali\Jalalian;
 
 class BroadcastScheduleController extends Controller
@@ -27,10 +26,10 @@ class BroadcastScheduleController extends Controller
                 'image'    => $channel->image,
                 'alt'      => $channel->name,
             ],
-        ],201);
+        ], 201);
     }
 
-    public function update(BroadcastScheduleRequest $request,$id)
+    public function update(BroadcastScheduleRequest $request, $id)
     {
         $schedule = BroadcastScheduleRepository::find($id);
 

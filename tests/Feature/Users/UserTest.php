@@ -29,7 +29,7 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->get(route('users.show',$user->username))->assertOk();
+        $this->get(route('users.show', $user->username))->assertOk();
     }
 
     /**
@@ -41,8 +41,8 @@ class UserTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->get(route('users.show',$user->username))->assertViewHas([
-            'isFollowing' => FALSE,
+        $this->get(route('users.show', $user->username))->assertViewHas([
+            'isFollowing' => false,
         ]);
     }
 
@@ -57,8 +57,8 @@ class UserTest extends TestCase
 
         auth()->user()->follow($user);
 
-        $this->get(route('users.show',$user->username))->assertViewHas([
-            'isFollowing' => TRUE,
+        $this->get(route('users.show', $user->username))->assertViewHas([
+            'isFollowing' => true,
         ]);
     }
 
@@ -77,26 +77,24 @@ class UserTest extends TestCase
      */
     public function user_can_see_his_post_timeline()
     {
-
-
-        $mammad = User::factory()->has(User::factory()->hasPosts(5)->count(3),'followings')->create();
+        $mammad = User::factory()->has(User::factory()->hasPosts(5)->count(3), 'followings')->create();
 
         $this->signIn($mammad);
 
         $this->get(route('users.posts-timeline'))->assertOk()->assertJsonStructure([
-            "data" => [
+            'data' => [
                 [
-                    "id",
-                    "title",
-                    "image",
-                    "countLike",
-                    "isLiked",
-                    "countDislike",
-                    "isDisliked",
-                    "url",
-                    "user" => [
-                        "name",
-                        "url",
+                    'id',
+                    'title',
+                    'image',
+                    'countLike',
+                    'isLiked',
+                    'countDislike',
+                    'isDisliked',
+                    'url',
+                    'user' => [
+                        'name',
+                        'url',
                     ],
                 ],
             ],
@@ -108,20 +106,20 @@ class UserTest extends TestCase
      */
     public function user_news_can_be_accessible()
     {
-        $mammad = User::factory()->has(Post::factory()->news()->released()->count(30),'posts')->create();
+        $mammad = User::factory()->has(Post::factory()->news()->released()->count(30), 'posts')->create();
 
-        $response = $this->get(route('users.news',$mammad->username));
+        $response = $this->get(route('users.news', $mammad->username));
 
         $response->assertOk();
 
-        $response->assertJsonCount(9,'data');
+        $response->assertJsonCount(9, 'data');
 
         $response->assertJsonStructure([
-            "data" => [
+            'data' => [
                 [
-                    "title",
-                    "image",
-                    "url",
+                    'title',
+                    'image',
+                    'url',
                 ],
             ],
         ]);
@@ -132,20 +130,20 @@ class UserTest extends TestCase
      */
     public function user_user_contents_can_be_accessible()
     {
-        $mammad = User::factory()->has(Post::factory()->userContent()->released()->count(30),'posts')->create();
+        $mammad = User::factory()->has(Post::factory()->userContent()->released()->count(30), 'posts')->create();
 
-        $response = $this->get(route('users.user-contents',$mammad->username));
+        $response = $this->get(route('users.user-contents', $mammad->username));
 
         $response->assertOk();
 
-        $response->assertJsonCount(9,'data');
+        $response->assertJsonCount(9, 'data');
 
         $response->assertJsonStructure([
-            "data" => [
+            'data' => [
                 [
-                    "title",
-                    "image",
-                    "url",
+                    'title',
+                    'image',
+                    'url',
                 ],
             ],
         ]);
@@ -158,14 +156,14 @@ class UserTest extends TestCase
     {
         $mammad = User::factory()->hasComments(20)->create();
 
-        $response = $this->get(route('users.comments',$mammad->username));
+        $response = $this->get(route('users.comments', $mammad->username));
 
         $response->assertOk();
 
-        $response->assertJsonCount(9,'data');
+        $response->assertJsonCount(9, 'data');
 
         $response->assertJsonStructure([
-            "data" => [
+            'data' => [
                 [
                     'context',
                     'id',
@@ -186,11 +184,11 @@ class UserTest extends TestCase
     {
         $mammad = User::factory()->hasFollowers(20)->create();
 
-        $response = $this->get(route('users.followers',$mammad->username));
+        $response = $this->get(route('users.followers', $mammad->username));
 
         $response->assertOk();
 
-        $this->assertInstanceOf(Paginator::class,$response->viewData('response'));
+        $this->assertInstanceOf(Paginator::class, $response->viewData('response'));
     }
 
     /**
@@ -200,10 +198,10 @@ class UserTest extends TestCase
     {
         $mammad = User::factory()->hasFollowings(20)->create();
 
-        $response = $this->get(route('users.followings',$mammad->username));
+        $response = $this->get(route('users.followings', $mammad->username));
 
         $response->assertOk();
 
-        $this->assertInstanceOf(Paginator::class,$response->viewData('response'));
+        $this->assertInstanceOf(Paginator::class, $response->viewData('response'));
     }
 }

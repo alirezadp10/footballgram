@@ -24,7 +24,7 @@ class UserRepository extends BaseRepository implements UserContract
             'user',
             'likes',
             'dislikes',
-        ])->customPaginate(9,function ($post) {
+        ])->customPaginate(9, function ($post) {
             return [
                 'id'           => $post->id,
                 'title'        => $post->title,
@@ -33,10 +33,10 @@ class UserRepository extends BaseRepository implements UserContract
                 'isLiked'      => $post->likes->contains(auth()->user()),
                 'countDislike' => $post->count_dislike,
                 'isDisliked'   => $post->dislikes->contains(auth()->user()),
-                'url'          => route('posts.show',$post->slug),
+                'url'          => route('posts.show', $post->slug),
                 'user'         => [
                     'name' => $post->user->name,
-                    'url'  => route('users.show',$post->user->username),
+                    'url'  => route('users.show', $post->user->username),
                 ],
             ];
         });
@@ -50,11 +50,11 @@ class UserRepository extends BaseRepository implements UserContract
                    ->news()
                    ->released()
                    ->latest()
-                   ->customPaginate(9,function ($post) {
+                   ->customPaginate(9, function ($post) {
                        return [
                            'title' => $post->title,
                            'image' => $post->image,
-                           'url'   => route('posts.show',$post->slug),
+                           'url'   => route('posts.show', $post->slug),
                        ];
                    });
     }
@@ -67,11 +67,11 @@ class UserRepository extends BaseRepository implements UserContract
                    ->userContent()
                    ->released()
                    ->latest()
-                   ->customPaginate(9,function ($post) {
+                   ->customPaginate(9, function ($post) {
                        return [
                            'title' => $post->title,
                            'image' => $post->image,
-                           'url'   => route('posts.show',$post->slug),
+                           'url'   => route('posts.show', $post->slug),
                        ];
                    });
     }
@@ -82,9 +82,9 @@ class UserRepository extends BaseRepository implements UserContract
             'commentable',
             'likes',
             'dislikes',
-        ])->latest()->customPaginate(9,function ($comment) {
+        ])->latest()->customPaginate(9, function ($comment) {
             return [
-                'context'    => nl2br(strip_tags($comment->context,'<a><br>')),
+                'context'    => nl2br(strip_tags($comment->context, '<a><br>')),
                 'id'         => $comment->id,
                 'url'        => url("/posts/{$comment->commentable->slug}/#comment-{$comment->id}"),
                 'like'       => $comment->like,
@@ -97,12 +97,12 @@ class UserRepository extends BaseRepository implements UserContract
 
     public function followers($username)
     {
-        return $this->firstOrFail($username)->followers()->customPaginate(10,$this->followList(),'users');
+        return $this->firstOrFail($username)->followers()->customPaginate(10, $this->followList(), 'users');
     }
 
     public function followings($username)
     {
-        return $this->firstOrFail($username)->followings()->customPaginate(10,$this->followList(),'users');
+        return $this->firstOrFail($username)->followings()->customPaginate(10, $this->followList(), 'users');
     }
 
     private function followList(): Closure
@@ -114,12 +114,12 @@ class UserRepository extends BaseRepository implements UserContract
                 'countFollowers'  => $user->count_followers,
                 'countFollowings' => $user->count_followings,
                 'countPosts'      => $user->count_news + $user->count_user_contents,
-                'followersURL'    => route('users.followers',$user->username),
-                'followingsURL'   => route('users.followings',$user->username),
-                'isFollow'        => $user->followings->contains('id',auth()->id()),
+                'followersURL'    => route('users.followers', $user->username),
+                'followingsURL'   => route('users.followings', $user->username),
+                'isFollow'        => $user->followings->contains('id', auth()->id()),
                 'isMe'            => $user->id == auth()->id(),
                 'username'        => $user->username,
-                'url'             => route('users.show',$user->username),
+                'url'             => route('users.show', $user->username),
                 'avatar'          => $user->image,
             ];
         };

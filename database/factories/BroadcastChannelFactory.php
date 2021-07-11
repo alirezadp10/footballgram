@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class BroadcastChannelFactory extends Factory
 {
-    public function __construct($count = NULL,?Collection $states = NULL,?Collection $has = NULL,?Collection $for = NULL,?Collection $afterMaking = NULL,?Collection $afterCreating = NULL,$connection = NULL)
+    public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null)
     {
-        parent::__construct($count,$states,$has,$for,$afterMaking,$afterCreating,$connection);
+        parent::__construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection);
 
-        Storage::fake("public");
+        Storage::fake('public');
     }
 
     protected $model = BroadcastChannel::class;
@@ -22,7 +22,7 @@ class BroadcastChannelFactory extends Factory
     public function definition()
     {
         return [
-            'name'  => $this->faker->randomElement(['tv3','varzesh','lenz','aio','tva','anten']),
+            'name'  => $this->faker->randomElement(['tv3', 'varzesh', 'lenz', 'aio', 'tva', 'anten']),
             'image' => UploadedFile::fake()->image('image.jpg'),
         ];
     }

@@ -19,9 +19,9 @@ class DraftPostTest extends TestCase
 
         $post = Post::factory()->create();
 
-        $this->put(route('posts.draft',['slug' => $post->slug]));
+        $this->put(route('posts.draft', ['slug' => $post->slug]));
 
-        $this->assertEquals('DRAFT',Post::find($post->id)->status);
+        $this->assertEquals('DRAFT', Post::find($post->id)->status);
     }
 
     /**
@@ -33,8 +33,8 @@ class DraftPostTest extends TestCase
 
         $post = Post::factory()->create(['status' => 'RELEASE']);
 
-        $this->put(route('posts.draft',['slug' => $post->slug]));
+        $this->put(route('posts.draft', ['slug' => $post->slug]));
 
-        $this->assertNotEquals('DRAFT',Post::find($post->id)->status);
+        $this->assertNotEquals('DRAFT', Post::find($post->id)->status);
     }
 }

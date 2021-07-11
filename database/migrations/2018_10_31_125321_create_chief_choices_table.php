@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateChiefChoicesTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateChiefChoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chief_choices',function (Blueprint $table) {
+        Schema::create('chief_choices', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('post_id')->constrained('posts')->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('order')->default(1);

@@ -29,6 +29,6 @@ class ChiefChoiceController extends Controller
 
         return response()->json([
             'message' => 'با موفقیت انجام شد',
-        ],201);
+        ], 201);
     }
 }

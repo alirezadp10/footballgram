@@ -13,7 +13,7 @@ class TagRepository extends BaseRepository implements TagContract
         $this->model = $tag;
     }
 
-    public function relatedNews($tag,$with = [])
+    public function relatedNews($tag, $with = [])
     {
         return $this->model->whereName($tag)
                            ->firstOrFail()
@@ -22,10 +22,10 @@ class TagRepository extends BaseRepository implements TagContract
                            ->released()
                            ->with($with)
                            ->latest('posts.id')
-                           ->customPaginate(9,count($with) ? $this->withRelations() : $this->feed());
+                           ->customPaginate(9, count($with) ? $this->withRelations() : $this->feed());
     }
 
-    public function relatedUserContents($tag,$with = [])
+    public function relatedUserContents($tag, $with = [])
     {
         return $this->model->whereName($tag)
                            ->firstOrFail()
@@ -34,28 +34,28 @@ class TagRepository extends BaseRepository implements TagContract
                            ->released()
                            ->with($with)
                            ->latest('posts.id')
-                           ->customPaginate(9,count($with) ? $this->withRelations() : $this->feed());
+                           ->customPaginate(9, count($with) ? $this->withRelations() : $this->feed());
     }
 
-    public function relatedComments($tag,$with = [])
+    public function relatedComments($tag, $with = [])
     {
         return $this->model->whereName($tag)
                            ->firstOrFail()
                            ->comments()
                            ->with($with)
                            ->latest('posts.id')
-                           ->customPaginate(9,function ($comment) {
+                           ->customPaginate(9, function ($comment) {
                                return [
                                    'id'           => $comment->id,
                                    'countLike'    => $comment->count_like,
                                    'isLiked'      => $comment->likes->contains(auth()->id()),
                                    'countDislike' => $comment->count_dislike,
                                    'isDisliked'   => $comment->dislikes->contains(auth()->id()),
-                                   'context'      => nl2br(strip_tags($comment->context,'<a><br>')),
-                                   'url'          => route('posts.show',$comment->post->slug),
+                                   'context'      => nl2br(strip_tags($comment->context, '<a><br>')),
+                                   'url'          => route('posts.show', $comment->post->slug),
                                    'image'        => $comment->user->image,
                                    'authorName'   => $comment->user->name,
-                                   'authorUrl'    => route('users.show',$comment->user->username),
+                                   'authorUrl'    => route('users.show', $comment->user->username),
                                ];
                            });
     }
@@ -77,9 +77,9 @@ class TagRepository extends BaseRepository implements TagContract
                 'isLiked'      => $post->likes->contains(auth()->id()),
                 'countDislike' => $post->count_dislike,
                 'isDisliked'   => $post->dislikes->contains(auth()->id()),
-                'url'          => route('posts.show',$post->slug),
+                'url'          => route('posts.show', $post->slug),
                 'authorName'   => $post->user->name,
-                'authorUrl'    => route('users.show',$post->user->username),
+                'authorUrl'    => route('users.show', $post->user->username),
             ];
         };
     }
@@ -90,7 +90,7 @@ class TagRepository extends BaseRepository implements TagContract
             return [
                 'title' => $news->title,
                 'time'  => Carbon::parse($news->created_at)->format('H:i'),
-                'url'   => route('posts.show',$news->slug),
+                'url'   => route('posts.show', $news->slug),
             ];
         };
     }

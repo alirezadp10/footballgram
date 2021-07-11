@@ -1,6 +1,7 @@
 <?php
+
 sleep(2);
-$step_number = $_REQUEST["step_number"];
+$step_number = $_REQUEST['step_number'];
 echo '<h2 class="StepTitle">Hello from Server! Step '.($step_number + 1).',</h2>
             <p>We have added a 2 sec sleep to feel the ajax loading, It would be faster otherwise</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 

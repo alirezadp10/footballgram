@@ -13,7 +13,7 @@ class CreateStandingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('standings',function (Blueprint $table) {
+        Schema::create('standings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('competition_id')->constrained('competitions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');

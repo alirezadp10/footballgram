@@ -12,7 +12,7 @@ class UpdatePostRequest extends FormRequest
 
     public function authorize()
     {
-        return Gate::allows('edit',$this->model());
+        return Gate::allows('edit', $this->model());
     }
 
     public function rules()

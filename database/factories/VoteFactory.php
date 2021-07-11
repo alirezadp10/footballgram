@@ -26,7 +26,7 @@ class VoteFactory extends Factory
         return [
             'user_id'   => User::factory(),
             'survey_id' => Survey::factory(),
-            'option'    => rand(1,4),
+            'option'    => rand(1, 4),
         ];
     }
 }

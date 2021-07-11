@@ -7,7 +7,7 @@ use Closure;
 
 class MostFollowedUsersPipe
 {
-    public function handle($data,Closure $next)
+    public function handle($data, Closure $next)
     {
         $data['mostFollowedUsers'] = User::latest('count_followers')->take(5)->get()->map(function ($user) {
             return [
@@ -16,7 +16,7 @@ class MostFollowedUsersPipe
                 'countFollowings' => $user->count_followings,
                 'countPosts'      => $user->count_user_contents + $user->count_news,
                 'image'           => $user->image,
-                'url'             => route('users.show',$user->username),
+                'url'             => route('users.show', $user->username),
             ];
         });
 

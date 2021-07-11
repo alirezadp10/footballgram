@@ -15,10 +15,10 @@ class FollowingTest extends TestCase
      */
     public function users_can_be_followed_by_others()
     {
-        $ali      = User::factory()->create();
+        $ali = User::factory()->create();
         $mohammad = User::factory()->create();
         $mohammad->follow($ali);
-        $this->assertDatabaseHas('followers',[
+        $this->assertDatabaseHas('followers', [
             'follower_id'  => $mohammad->id,
             'follow_up_id' => $ali->id,
         ]);
@@ -29,11 +29,11 @@ class FollowingTest extends TestCase
      */
     public function users_can_not_followed_by_specific_user_twice()
     {
-        $ali      = User::factory()->create();
+        $ali = User::factory()->create();
         $mohammad = User::factory()->create();
         $mohammad->follow($ali);
         $mohammad->follow($ali);
-        $this->assertEquals(1,$ali->followers->count());
+        $this->assertEquals(1, $ali->followers->count());
     }
 
     /**
@@ -41,11 +41,11 @@ class FollowingTest extends TestCase
      */
     public function users_can_be_unfollowed_by_others()
     {
-        $ali      = User::factory()->create();
+        $ali = User::factory()->create();
         $mohammad = User::factory()->create();
         $mohammad->follow($ali);
         $mohammad->unfollow($ali);
-        $this->assertDatabaseMissing('followers',[
+        $this->assertDatabaseMissing('followers', [
             'follower_id'  => $mohammad->id,
             'follow_up_id' => $ali->id,
         ]);
@@ -62,11 +62,11 @@ class FollowingTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->assertEquals(0,$auth->count_followings);
+        $this->assertEquals(0, $auth->count_followings);
 
-        $this->post(route('users.follow',$user->username));
+        $this->post(route('users.follow', $user->username));
 
-        $this->assertEquals(1,$auth->fresh()->count_followings);
+        $this->assertEquals(1, $auth->fresh()->count_followings);
     }
 
     /**
@@ -78,11 +78,11 @@ class FollowingTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->assertEquals(0,$user->count_followers);
+        $this->assertEquals(0, $user->count_followers);
 
-        $this->post(route('users.follow',$user->username));
+        $this->post(route('users.follow', $user->username));
 
-        $this->assertEquals(1,$user->fresh()->count_followers);
+        $this->assertEquals(1, $user->fresh()->count_followers);
     }
 
     /**
@@ -98,11 +98,11 @@ class FollowingTest extends TestCase
 
         auth()->user()->follow($user);
 
-        $this->assertEquals(1,$auth->fresh()->count_followings);
+        $this->assertEquals(1, $auth->fresh()->count_followings);
 
-        $this->post(route('users.follow',$user->username));
+        $this->post(route('users.follow', $user->username));
 
-        $this->assertEquals(0,$auth->fresh()->count_followings);
+        $this->assertEquals(0, $auth->fresh()->count_followings);
     }
 
     /**
@@ -116,11 +116,10 @@ class FollowingTest extends TestCase
 
         auth()->user()->follow($user);
 
-        $this->assertEquals(1,$user->fresh()->count_followers);
+        $this->assertEquals(1, $user->fresh()->count_followers);
 
-        $this->post(route('users.follow',$user->username));
+        $this->post(route('users.follow', $user->username));
 
-        $this->assertEquals(0,$user->fresh()->count_followers);
+        $this->assertEquals(0, $user->fresh()->count_followers);
     }
-
 }

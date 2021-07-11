@@ -16,7 +16,7 @@ class CreatePostRequest extends FormRequest
             return auth()->user()->can('create-user-content');
         }
 
-        return FALSE;
+        return false;
     }
 
     public function rules(): array

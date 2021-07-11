@@ -3,7 +3,6 @@
 namespace Tests\Feature\Posts;
 
 use App\Models\Post;
-use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

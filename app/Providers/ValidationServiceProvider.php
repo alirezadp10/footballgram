@@ -16,10 +16,10 @@ class ValidationServiceProvider extends ServiceProvider
     {
         Validator::extend('base64', function ($attribute, $value, $parameters, $validator) {
             if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $value)) {
-                return TRUE;
+                return true;
             }
-                return FALSE;
-            
+
+            return false;
         });
 
         Validator::extend('base64image', function ($attribute, $value, $parameters, $validator) {
@@ -46,13 +46,14 @@ class ValidationServiceProvider extends ServiceProvider
             );
             // check file format
             if (!in_array($format, $allow)) {
-                return FALSE;
+                return false;
             }
             // check base64 format
             if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $explode[1])) {
-                return FALSE;
+                return false;
             }
-            return TRUE;
+
+            return true;
         });
     }
 

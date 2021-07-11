@@ -13,7 +13,7 @@ class CreateBroadcastScheduleTable extends Migration
      */
     public function up()
     {
-        Schema::create('broadcast_schedule',function (Blueprint $table) {
+        Schema::create('broadcast_schedule', function (Blueprint $table) {
             $table->increments('id');
             $table->string('host');
             $table->string('guest');

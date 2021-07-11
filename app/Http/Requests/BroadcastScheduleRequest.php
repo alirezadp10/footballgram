@@ -26,7 +26,7 @@ class BroadcastScheduleRequest extends FormRequest
     {
         $data = $this->all();
 
-        $data['datetime'] = Carbon::createFromTimestamp(substr($this->datetime,0,10))->format("Y-m-d H:i:s");
+        $data['datetime'] = Carbon::createFromTimestamp(substr($this->datetime, 0, 10))->format('Y-m-d H:i:s');
 
         $this->replace($data);
     }

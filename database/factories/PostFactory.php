@@ -13,11 +13,11 @@ class PostFactory extends Factory
 {
     protected $model = Post::class;
 
-    public function __construct($count = NULL,?Collection $states = NULL,?Collection $has = NULL,?Collection $for = NULL,?Collection $afterMaking = NULL,?Collection $afterCreating = NULL,$connection = NULL)
+    public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null)
     {
-        parent::__construct($count,$states,$has,$for,$afterMaking,$afterCreating,$connection);
+        parent::__construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection);
 
-        Storage::fake("public");
+        Storage::fake('public');
     }
 
     public function definition()
@@ -39,21 +39,21 @@ class PostFactory extends Factory
 
     public function news()
     {
-        return $this->state(fn() => ['type' => 'NEWS']);
+        return $this->state(fn () => ['type' => 'NEWS']);
     }
 
     public function userContent()
     {
-        return $this->state(fn() => ['type' => 'USER_CONTENT']);
+        return $this->state(fn () => ['type' => 'USER_CONTENT']);
     }
 
     public function released()
     {
-        return $this->state(fn() => ['status' => 'RELEASED']);
+        return $this->state(fn () => ['status' => 'RELEASED']);
     }
 
     public function drafted()
     {
-        return $this->state(fn() => ['status' => 'DRAFTED']);
+        return $this->state(fn () => ['status' => 'DRAFTED']);
     }
 }

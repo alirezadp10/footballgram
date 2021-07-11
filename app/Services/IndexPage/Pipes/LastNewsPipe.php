@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 class LastNewsPipe
 {
-    public function handle($data,Closure $next)
+    public function handle($data, Closure $next)
     {
         $data['lastNews'] = Post::news()
                                 ->released()
@@ -19,7 +19,7 @@ class LastNewsPipe
                                     return [
                                         'title' => $news->title,
                                         'time'  => Carbon::parse($news->created_at)->format('H:i'),
-                                        'url'   => route('posts.show',$news->slug),
+                                        'url'   => route('posts.show', $news->slug),
                                     ];
                                 });
 

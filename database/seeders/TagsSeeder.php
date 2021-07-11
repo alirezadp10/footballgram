@@ -149,7 +149,7 @@ class TagsSeeder extends Seeder
             ],
         ];
 
-        foreach ($tags as $tag){
+        foreach ($tags as $tag) {
             Tag::factory($tag)->create();
         }
     }

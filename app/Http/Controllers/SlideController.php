@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\SlideRequest;
 use App\Models\Slider;
 use Facades\App\Repositories\Contracts\PostRepository;
@@ -21,9 +20,9 @@ class SlideController extends Controller
             'order'      => request('order'),
         ]);
 
-        session()->flash('message.type','success');
-        session()->flash('message.content','تغییرات با موفقیت انجام شد!');
-        session()->flash('message.time','15');
+        session()->flash('message.type', 'success');
+        session()->flash('message.content', 'تغییرات با موفقیت انجام شد!');
+        session()->flash('message.time', '15');
 
         return back();
     }
@@ -41,9 +40,9 @@ class SlideController extends Controller
 
         $slider->delete();
 
-        session()->flash('message.type','success');
-        session()->flash('message.content','تغییرات با موفقیت انجام شد!');
-        session()->flash('message.time','15');
+        session()->flash('message.type', 'success');
+        session()->flash('message.content', 'تغییرات با موفقیت انجام شد!');
+        session()->flash('message.time', '15');
 
         return back();
     }

@@ -22,7 +22,7 @@ class AbilityFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->jobTitle
+            'title' => $this->faker->jobTitle,
         ];
     }
 }

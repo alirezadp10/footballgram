@@ -17,11 +17,11 @@ class TimelineTest extends TestCase
      */
     public function a_user_have_post_timeline()
     {
-        $mammad = User::factory()->has(User::factory()->hasPosts(5)->count(3),'followings')->create();
+        $mammad = User::factory()->has(User::factory()->hasPosts(5)->count(3), 'followings')->create();
 
-        $this->assertInstanceOf(Post::class,$mammad->postTimeline->first());
+        $this->assertInstanceOf(Post::class, $mammad->postTimeline->first());
 
-        $this->assertEquals(15,$mammad->postTimeline->count());
+        $this->assertEquals(15, $mammad->postTimeline->count());
     }
 
     /**
@@ -29,10 +29,10 @@ class TimelineTest extends TestCase
      */
     public function a_user_have_tweet_timeline()
     {
-        $mammad = User::factory()->has(User::factory()->hasTweets(5)->count(3),'followings')->create();
+        $mammad = User::factory()->has(User::factory()->hasTweets(5)->count(3), 'followings')->create();
 
-        $this->assertInstanceOf(Tweet::class,$mammad->tweetTimeline->first());
+        $this->assertInstanceOf(Tweet::class, $mammad->tweetTimeline->first());
 
-        $this->assertEquals(15,$mammad->tweetTimeline->count());
+        $this->assertEquals(15, $mammad->tweetTimeline->count());
     }
 }

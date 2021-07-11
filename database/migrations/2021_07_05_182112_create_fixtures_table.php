@@ -13,14 +13,14 @@ class CreateFixturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fixtures',function (Blueprint $table) {
+        Schema::create('fixtures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('competition_id')->constrained('competitions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('host');
             $table->string('guest');
             $table->string('host_point')->nullable();
             $table->string('guest_point')->nullable();
-            $table->boolean('final')->default(FALSE);
+            $table->boolean('final')->default(false);
             $table->timestamp('datetime')->nullable();
             $table->integer('season')->index();
             $table->string('match_type')->index()->nullable()->comment('LEAGUE | GROUP_STAGE | PLAY_OFFS');

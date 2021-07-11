@@ -18,19 +18,19 @@ class CompetitionRepository extends BaseRepository implements CompetitionContrac
         return $this->model->whereName($competition)->first();
     }
 
-    public function lastWeek($competition,$season)
+    public function lastWeek($competition, $season)
     {
         return $competition->fixtures()->whereSeason($season)->latest('datetime')->first();
     }
 
-    public function clubs($competition,$season)
+    public function clubs($competition, $season)
     {
         return $competition->standing()->whereSeason($season)->get();
     }
 
-    public function retrieveFixtures($competition,$season,$filter,$currentWeek)
+    public function retrieveFixtures($competition, $season, $filter, $currentWeek)
     {
-        return $competition->whereSeason($season)->orderBy('datetime')->when($filter,function ($q) use ($filter) {
+        return $competition->whereSeason($season)->orderBy('datetime')->when($filter, function ($q) use ($filter) {
             if ($filter['type'] == 'period') {
                 $q->wherePeriod($filter['value']);
             }
@@ -38,9 +38,9 @@ class CompetitionRepository extends BaseRepository implements CompetitionContrac
                 $q->whereHost($filter['value']);
                 $q->orWhereGuest($filter['value']);
             }
-        })->when(!$filter,function ($q) use ($currentWeek) {
+        })->when(!$filter, function ($q) use ($currentWeek) {
             $q->wherePeriod($currentWeek);
-        })->get()->map(fn($fixture) => [
+        })->get()->map(fn ($fixture) => [
             'host'       => $fixture->host,
             'hostPoint'  => $fixture->final ? $fixture->host_point : '-',
             'guest'      => $fixture->guest,
@@ -49,18 +49,18 @@ class CompetitionRepository extends BaseRepository implements CompetitionContrac
         ]);
     }
 
-    public function retrieveStanding($competition,$season)
+    public function retrieveStanding($competition, $season)
     {
         return $competition->standing()
                            ->whereSeason($season)
-                           ->when(in_array($this->model->name,$this->isGrouped()),function ($q) {
+                           ->when(in_array($this->model->name, $this->isGrouped()), function ($q) {
                                $q->orderBy('group');
                            })
                            ->orderBy('position')
                            ->get();
     }
 
-    public function retrieveScorers($competition,$season)
+    public function retrieveScorers($competition, $season)
     {
         return $competition->scorers()->whereSeason($season)->latest('count_scores')->get();
     }

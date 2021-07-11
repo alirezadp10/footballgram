@@ -18,7 +18,7 @@ class FollowingTest extends TestCase
     public function guests_can_not_follow_any_others()
     {
         $user = User::factory()->create();
-        $this->post(route('users.follow',[
+        $this->post(route('users.follow', [
             'username' => $user->username,
         ]))->assertRedirect('login');
     }
@@ -29,8 +29,8 @@ class FollowingTest extends TestCase
     public function follow_request_must_have_valid_username()
     {
         $this->signIn();
-        $this->post(route('users.follow',[
-            'username' => "foobar",
+        $this->post(route('users.follow', [
+            'username' => 'foobar',
         ]))->assertNotFound();
     }
 
@@ -43,26 +43,26 @@ class FollowingTest extends TestCase
         $auth = auth()->user();
         $user = User::factory()->create();
 
-        $this->post(route('users.follow',[
+        $this->post(route('users.follow', [
             'username' => $user->username,
         ]));
-        $this->assertDatabaseHas('followers',[
+        $this->assertDatabaseHas('followers', [
             'follower_id'  => auth()->id(),
             'follow_up_id' => $user->id,
         ]);
 
-        $this->actingAs($auth->fresh())->post(route('users.follow',[
+        $this->actingAs($auth->fresh())->post(route('users.follow', [
             'username' => $user->username,
         ]));
-        $this->assertDatabaseMissing('followers',[
+        $this->assertDatabaseMissing('followers', [
             'follower_id'  => auth()->id(),
             'follow_up_id' => $user->id,
         ]);
 
-        $this->actingAs($auth->fresh())->post(route('users.follow',[
+        $this->actingAs($auth->fresh())->post(route('users.follow', [
             'username' => $user->username,
         ]));
-        $this->assertDatabaseHas('followers',[
+        $this->assertDatabaseHas('followers', [
             'follower_id'  => auth()->id(),
             'follow_up_id' => $user->id,
         ]);
@@ -79,11 +79,11 @@ class FollowingTest extends TestCase
 
         $user = User::factory()->create();
 
-        $this->post(route('users.follow',[
+        $this->post(route('users.follow', [
             'username' => $user->username,
         ]));
 
-        Notification::assertSentTo($user,FollowingNotification::class);
+        Notification::assertSentTo($user, FollowingNotification::class);
     }
 
     /**
@@ -99,10 +99,10 @@ class FollowingTest extends TestCase
 
         auth()->user()->follow($user);
 
-        $this->post(route('users.follow',[
+        $this->post(route('users.follow', [
             'username' => $user->username,
         ]));
 
-        Notification::assertSentTo($user,FollowingNotification::class);
+        Notification::assertSentTo($user, FollowingNotification::class);
     }
 }

@@ -16,7 +16,7 @@ return [
      */
     'ignore' => [
         // 'nova*'
-        'resources*'
+        'resources*',
     ],
 
     /**

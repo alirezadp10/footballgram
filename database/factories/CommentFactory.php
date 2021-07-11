@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
-
 use App\Models\Post;
 use App\Models\Tweet;
 use App\Models\User;
@@ -30,7 +29,7 @@ class CommentFactory extends Factory
             'user_id'          => User::factory(),
             'commentable_id'   => Post::factory(),
             'commentable_type' => Post::class,
-            'parent_id'        => NULL,
+            'parent_id'        => null,
             'like'             => 0,
             'dislike'          => 0,
             'report'           => 0,
@@ -39,7 +38,7 @@ class CommentFactory extends Factory
 
     public function post()
     {
-        return $this->state(fn() => [
+        return $this->state(fn () => [
             'commentable_id'   => Post::factory(),
             'commentable_type' => Post::class,
         ]);
@@ -47,7 +46,7 @@ class CommentFactory extends Factory
 
     public function tweet()
     {
-        return $this->state(fn() => [
+        return $this->state(fn () => [
             'commentable_id'   => Tweet::factory(),
             'commentable_type' => Tweet::class,
         ]);

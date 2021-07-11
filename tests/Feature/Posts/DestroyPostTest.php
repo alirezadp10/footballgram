@@ -19,7 +19,7 @@ class DestroyPostTest extends TestCase
     {
         $post = Post::factory()->released()->create();
 
-        $this->delete(route('posts.destroy',$post->slug))->assertRedirect('login');
+        $this->delete(route('posts.destroy', $post->slug))->assertRedirect('login');
     }
 
     /**
@@ -31,7 +31,7 @@ class DestroyPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->delete(route('posts.destroy',$post->slug))->assertForbidden();
+        $this->delete(route('posts.destroy', $post->slug))->assertForbidden();
     }
 
     /**
@@ -41,7 +41,7 @@ class DestroyPostTest extends TestCase
     {
         $this->signIn()->ability('delete-news');
 
-        $this->delete(route('posts.destroy','foobar'))->assertNotFound();
+        $this->delete(route('posts.destroy', 'foobar'))->assertNotFound();
     }
 
     /**
@@ -55,15 +55,15 @@ class DestroyPostTest extends TestCase
 
         event(new DetectTagsEvent($post));
 
-        $this->delete(route('posts.destroy',$post->slug));
+        $this->delete(route('posts.destroy', $post->slug));
 
-        $this->assertDatabaseMissing('tags',[
+        $this->assertDatabaseMissing('tags', [
             'name'  => 'Official',
             'count' => '1',
-        ])->assertDatabaseMissing('tags',[
+        ])->assertDatabaseMissing('tags', [
             'name'  => 'Juventus',
             'count' => '1',
-        ])->assertDatabaseMissing('tags',[
+        ])->assertDatabaseMissing('tags', [
             'name'  => 'Ronaldo',
             'count' => '1',
         ]);
@@ -78,7 +78,7 @@ class DestroyPostTest extends TestCase
 
         $post = Post::factory()->hasComments()->released()->create();
 
-        $this->delete(route('posts.destroy',$post->slug));
+        $this->delete(route('posts.destroy', $post->slug));
 
         $this->assertEmpty(Comment::all());
     }
@@ -92,16 +92,16 @@ class DestroyPostTest extends TestCase
 
         $post = Post::factory()->hasComments(5)->hasLikes(4)->hasDislikes(3)->released()->create();
 
-        $this->delete(route('posts.destroy',$post->slug));
+        $this->delete(route('posts.destroy', $post->slug));
 
         $post->refresh();
 
-        $this->assertEquals(0,$post->user->count_post);
+        $this->assertEquals(0, $post->user->count_post);
 
-        $this->assertEquals(0,$post->user->count_likes_given);
+        $this->assertEquals(0, $post->user->count_likes_given);
 
-        $this->assertEquals(0,$post->user->count_dislikes_given);
+        $this->assertEquals(0, $post->user->count_dislikes_given);
 
-        $this->assertEquals(0,$post->user->count_comments_given);
+        $this->assertEquals(0, $post->user->count_comments_given);
     }
 }
