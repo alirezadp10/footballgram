@@ -17,7 +17,7 @@ class ShowPostTest extends TestCase
     {
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertOk()->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertOk()->assertViewHas([
             'post.id',
             'post.main_title',
             'post.secondary_title',
@@ -45,7 +45,7 @@ class ShowPostTest extends TestCase
     {
         $post = Post::factory()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertNotFound();
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertNotFound();
     }
 
     /**
@@ -57,7 +57,7 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory(['user_id' => auth()->id()])->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.update_post' => true,
         ]);
     }
@@ -71,7 +71,7 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.update_post' => true,
         ]);
     }
@@ -85,7 +85,7 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory(['user_id' => auth()->id()])->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.delete_post' => true,
         ]);
     }
@@ -99,13 +99,13 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.delete_post' => false,
         ]);
 
         $this->signIn()->ability('delete-news');
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.delete_post' => true,
         ]);
     }
@@ -119,13 +119,13 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.manage_chief_choice' => false,
         ]);
 
         $this->signIn()->ability('manage-chief-choice');
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.manage_chief_choice' => true,
         ]);
     }
@@ -139,13 +139,13 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.manage_slide_post' => false,
         ]);
 
         $this->signIn()->ability('manage-slide-post');
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.manage_slide_post' => true,
         ]);
     }
@@ -159,13 +159,13 @@ class ShowPostTest extends TestCase
 
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.create_comment' => false,
         ]);
 
         $this->signIn()->ability('create-comment');
 
-        $this->get(route('posts.show',['slug' => $post->slug]))->assertViewHas([
+        $this->get(route('posts.show', ['slug' => $post->slug]))->assertViewHas([
             'permissions.create_comment' => true,
         ]);
     }
@@ -177,8 +177,8 @@ class ShowPostTest extends TestCase
     {
         $post = Post::factory()->released()->create();
 
-        $this->get(route('posts.show',['slug' => $post->slug]));
+        $this->get(route('posts.show', ['slug' => $post->slug]));
 
-        $this->assertEquals(1,$post->fresh()->view);
+        $this->assertEquals(1, $post->fresh()->view);
     }
 }

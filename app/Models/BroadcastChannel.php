@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BroadcastChannel extends Model
 {
-    use HasFactory,ImageableTrait;
+    use HasFactory;
+    use ImageableTrait;
 
     protected $fillable = [
         'name',

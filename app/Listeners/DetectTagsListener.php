@@ -10,6 +10,7 @@ class DetectTagsListener
      * Handle the event.
      *
      * @param object $event
+     *
      * @return void
      */
     public function handle($event)
@@ -21,7 +22,7 @@ class DetectTagsListener
 
     private function persistTag($event)
     {
-        preg_match_all("/(\B#)(\w+)/u",$event->contextable()->context,$tags);
+        preg_match_all("/(\B#)(\w+)/u", $event->contextable()->context, $tags);
 
         $event->contextable()->tags()->delete();
 
@@ -33,7 +34,7 @@ class DetectTagsListener
 
     private function updateContext($event)
     {
-        $context = preg_replace("/(\B#)(\w+)/u","<a href='/tags/$2' class='hashtag'>$0</a>",$event->contextable()->context);
+        $context = preg_replace("/(\B#)(\w+)/u", "<a href='/tags/$2' class='hashtag'>$0</a>", $event->contextable()->context);
 
         $event->contextable()->update([
             'context' => $context,

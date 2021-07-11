@@ -4,12 +4,8 @@ namespace Tests\Feature;
 
 use App\Models\BroadcastSchedule;
 use App\Models\ChiefChoice;
-use App\Models\Competition;
-use App\Models\Fixture;
 use App\Models\Post;
-use App\Models\Scorers;
 use App\Models\Slider;
-use App\Models\Standing;
 use App\Models\Survey;
 use App\Models\Tag;
 use App\Models\User;
@@ -34,14 +30,13 @@ class IndexTest extends TestCase
      */
     public function trend_tags_must_be_passed_to_index_page()
     {
-
         Tag::factory(['count' => 1])->hasAttached(Post::factory())->count(20)->create();
 
         $response = $this->get(route('index'))->assertViewHas([
             'response.trends',
         ]);
 
-        $this->assertCount(10,$response['response']['trends']);
+        $this->assertCount(10, $response['response']['trends']);
     }
 
     /**
@@ -63,14 +58,14 @@ class IndexTest extends TestCase
 
         $this->get(route('index'))->assertViewHas([
             'response.trends.0' => [
-                'name'  => "#messi",
+                'name'  => '#messi',
                 'count' => 3,
-                'url'   => route('tags.show','messi'),
+                'url'   => route('tags.show', 'messi'),
             ],
             'response.trends.1' => [
-                'name'  => "#ronaldo",
+                'name'  => '#ronaldo',
                 'count' => 2,
-                'url'   => route('tags.show','ronaldo'),
+                'url'   => route('tags.show', 'ronaldo'),
             ],
         ]);
     }
@@ -112,7 +107,7 @@ class IndexTest extends TestCase
             'response.lastNews.0.url',
         ]);
 
-        $this->assertCount(15,$response['response']['lastNews']);
+        $this->assertCount(15, $response['response']['lastNews']);
     }
 
     /**
@@ -120,7 +115,7 @@ class IndexTest extends TestCase
      */
     public function most_followed_users_must_be_passed_to_index_page()
     {
-        User::factory()->count(10)->hasFollowers(rand(1,5))->create();
+        User::factory()->count(10)->hasFollowers(rand(1, 5))->create();
 
         $response = $this->get(route('index'))->assertViewHas([
             'response.mostFollowedUsers.0.name',
@@ -131,7 +126,7 @@ class IndexTest extends TestCase
             'response.mostFollowedUsers.0.url',
         ]);
 
-        $this->assertCount(5,$response['response']['mostFollowedUsers']);
+        $this->assertCount(5, $response['response']['mostFollowedUsers']);
     }
 
     /**
@@ -149,8 +144,7 @@ class IndexTest extends TestCase
             'response.competitionNews.0.url',
         ]);
 
-        $this->assertCount(15,$response['response']['competitionNews']);
-
+        $this->assertCount(15, $response['response']['competitionNews']);
     }
 
     /**
@@ -174,9 +168,9 @@ class IndexTest extends TestCase
 
         $response = $this->get(route('index'));
 
-        $this->assertEquals($response['response']['competitionNews'][0]['title'],$news2->title);
+        $this->assertEquals($response['response']['competitionNews'][0]['title'], $news2->title);
 
-        $this->assertEquals($response['response']['competitionNews'][1]['title'],$news1->title);
+        $this->assertEquals($response['response']['competitionNews'][1]['title'], $news1->title);
     }
 
     /**
@@ -192,7 +186,7 @@ class IndexTest extends TestCase
             'response.hotNews.0.url',
         ]);
 
-        $this->assertCount(15,$response['response']['hotNews']);
+        $this->assertCount(15, $response['response']['hotNews']);
     }
 
     /**
@@ -262,9 +256,9 @@ class IndexTest extends TestCase
      */
     public function competition_news_must_be_accessible_in_index_page()
     {
-        Post::factory()->has(Tag::factory(['name' => 'فولاد']),'tags')->create();
+        Post::factory()->has(Tag::factory(['name' => 'فولاد']), 'tags')->create();
 
-        $this->get(route('index.competition-news',[
+        $this->get(route('index.competition-news', [
             'tag' => 'فولاد',
         ]))->assertOk();
     }

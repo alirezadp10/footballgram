@@ -16,7 +16,7 @@ class BroadcastScheduleRepository extends BaseRepository implements BroadcastCha
     public function all()
     {
         return $this->model->with('channel')
-                           ->where('datetime','>',now())
+                           ->where('datetime', '>', now())
                            ->orderBy('datetime')
                            ->get()
                            ->map(function ($item) {

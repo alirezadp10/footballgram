@@ -4,65 +4,65 @@ namespace App\Constants;
 
 class CompetitionsConstants
 {
-    const WIKIPEDIA        = 'WIKIPEDIA';
-    const GOAL             = 'GOAL';
+    const WIKIPEDIA = 'WIKIPEDIA';
+    const GOAL = 'GOAL';
     const FOOTBALLDATABASE = 'FOOTBALLDATABASE';
-    const PREMIERLEAGUE    = 'PREMIERLEAGUE';
-    const WORLDFOOTBALL    = 'WORLDFOOTBALL';
-    const CALCIO           = 'CALCIO';
-    const EREDIVISIE       = 'EREDIVISIE';
-    const LOSHAMPIONE      = 'LOSHAMPIONE';
-    const STARSLEAGUE      = 'STARSLEAGUE';
-    const BUNDESLIGA       = 'BUNDESLIGA';
-    const LALIGA           = 'LALIGA';
-    const KHALIGEFARS      = 'KHALIGEFARS';
-    const AZADEGAN         = 'AZADEGAN';
-    const VARZESH3         = 'VARZESH3';
+    const PREMIERLEAGUE = 'PREMIERLEAGUE';
+    const WORLDFOOTBALL = 'WORLDFOOTBALL';
+    const CALCIO = 'CALCIO';
+    const EREDIVISIE = 'EREDIVISIE';
+    const LOSHAMPIONE = 'LOSHAMPIONE';
+    const STARSLEAGUE = 'STARSLEAGUE';
+    const BUNDESLIGA = 'BUNDESLIGA';
+    const LALIGA = 'LALIGA';
+    const KHALIGEFARS = 'KHALIGEFARS';
+    const AZADEGAN = 'AZADEGAN';
+    const VARZESH3 = 'VARZESH3';
 
     public static $Source = [
-        CompetitionsConstants::GOAL             => "Goal",
-        CompetitionsConstants::WORLDFOOTBALL    => "WorldFootball",
-        CompetitionsConstants::FOOTBALLDATABASE => "FootballDatabase",
-        CompetitionsConstants::WIKIPEDIA        => "Wikipedia",
-        CompetitionsConstants::VARZESH3         => "Varzesh3",
+        CompetitionsConstants::GOAL             => 'Goal',
+        CompetitionsConstants::WORLDFOOTBALL    => 'WorldFootball',
+        CompetitionsConstants::FOOTBALLDATABASE => 'FootballDatabase',
+        CompetitionsConstants::WIKIPEDIA        => 'Wikipedia',
+        CompetitionsConstants::VARZESH3         => 'Varzesh3',
     ];
 
     public static $Goal = [
-        CompetitionsConstants::PREMIERLEAGUE => "premier-league",
+        CompetitionsConstants::PREMIERLEAGUE => 'premier-league',
     ];
 
     public static $WorldFootball = [
-        CompetitionsConstants::PREMIERLEAGUE => "eng-premier-league",
-        CompetitionsConstants::CALCIO        => "ita-serie-a",
-        CompetitionsConstants::EREDIVISIE    => "ned-eredivisie",
-        CompetitionsConstants::LOSHAMPIONE   => "fra-ligue-1",
-        CompetitionsConstants::STARSLEAGUE   => "qat-qatar-stars-league",
-        CompetitionsConstants::BUNDESLIGA    => "bundesliga",
-        CompetitionsConstants::LALIGA        => "esp-primera-division",
-        CompetitionsConstants::KHALIGEFARS   => "irn-persian-gulf-pro-league",
+        CompetitionsConstants::PREMIERLEAGUE => 'eng-premier-league',
+        CompetitionsConstants::CALCIO        => 'ita-serie-a',
+        CompetitionsConstants::EREDIVISIE    => 'ned-eredivisie',
+        CompetitionsConstants::LOSHAMPIONE   => 'fra-ligue-1',
+        CompetitionsConstants::STARSLEAGUE   => 'qat-qatar-stars-league',
+        CompetitionsConstants::BUNDESLIGA    => 'bundesliga',
+        CompetitionsConstants::LALIGA        => 'esp-primera-division',
+        CompetitionsConstants::KHALIGEFARS   => 'irn-persian-gulf-pro-league',
     ];
 
     public static $Wikipedia = [
-        CompetitionsConstants::CALCIO => "Serie_A",
-        CompetitionsConstants::LALIGA => "La_Liga",
+        CompetitionsConstants::CALCIO => 'Serie_A',
+        CompetitionsConstants::LALIGA => 'La_Liga',
 
-        CompetitionsConstants::PREMIERLEAGUE => "eng-premier-league",
-        CompetitionsConstants::EREDIVISIE    => "ned-eredivisie",
-        CompetitionsConstants::LOSHAMPIONE   => "fra-ligue-1",
-        CompetitionsConstants::STARSLEAGUE   => "qat-qatar-stars-league",
-        CompetitionsConstants::BUNDESLIGA    => "bundesliga",
-        CompetitionsConstants::KHALIGEFARS   => "irn-persian-gulf-pro-league",
+        CompetitionsConstants::PREMIERLEAGUE => 'eng-premier-league',
+        CompetitionsConstants::EREDIVISIE    => 'ned-eredivisie',
+        CompetitionsConstants::LOSHAMPIONE   => 'fra-ligue-1',
+        CompetitionsConstants::STARSLEAGUE   => 'qat-qatar-stars-league',
+        CompetitionsConstants::BUNDESLIGA    => 'bundesliga',
+        CompetitionsConstants::KHALIGEFARS   => 'irn-persian-gulf-pro-league',
     ];
 
     public static $FootballDatabase = [
-        CompetitionsConstants::PREMIERLEAGUE => "england-premier-league",
-        CompetitionsConstants::CALCIO        => "italy-serie-a",
-        CompetitionsConstants::EREDIVISIE    => "netherlands-eredivisie",
-        CompetitionsConstants::LOSHAMPIONE   => "france-ligue-1",
-        CompetitionsConstants::STARSLEAGUE   => "qatar-stars-league",
-        CompetitionsConstants::BUNDESLIGA    => "germany-bundesliga",
-        CompetitionsConstants::LALIGA        => "spain-liga-bbva",
-        CompetitionsConstants::KHALIGEFARS   => "iran-persian-gulf-league",
+        CompetitionsConstants::PREMIERLEAGUE => 'england-premier-league',
+        CompetitionsConstants::CALCIO        => 'italy-serie-a',
+        CompetitionsConstants::EREDIVISIE    => 'netherlands-eredivisie',
+        CompetitionsConstants::LOSHAMPIONE   => 'france-ligue-1',
+        CompetitionsConstants::STARSLEAGUE   => 'qatar-stars-league',
+        CompetitionsConstants::BUNDESLIGA    => 'germany-bundesliga',
+        CompetitionsConstants::LALIGA        => 'spain-liga-bbva',
+        CompetitionsConstants::KHALIGEFARS   => 'iran-persian-gulf-league',
     ];
 
     public static $Navad = [
@@ -188,5 +188,4 @@ class CompetitionsConstants
             'ID' => '18',
         ],
     ];
-
 }

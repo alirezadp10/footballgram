@@ -19,7 +19,7 @@ class CreatePostTest extends TestCase
     {
         $attributes = Post::factory()->raw();
 
-        $this->post(route('posts.store'),$attributes)->assertRedirect('login');
+        $this->post(route('posts.store'), $attributes)->assertRedirect('login');
     }
 
     /**
@@ -31,7 +31,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory()->raw();
 
-        $this->post(route('posts.store'),$attributes)->assertForbidden();
+        $this->post(route('posts.store'), $attributes)->assertForbidden();
     }
 
     /**
@@ -43,7 +43,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory()->news()->raw(['image' => '']);
 
-        $response = $this->post(route('posts.store'),$attributes);
+        $response = $this->post(route('posts.store'), $attributes);
 
         $response->assertSessionHasErrors('image');
     }
@@ -57,7 +57,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory(['main_title' => ''])->raw();
 
-        $response = $this->post(route('posts.store'),$attributes);
+        $response = $this->post(route('posts.store'), $attributes);
 
         $response->assertSessionHasErrors('main_title');
     }
@@ -71,7 +71,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory(['secondary_title' => ''])->raw();
 
-        $response = $this->post(route('posts.store'),$attributes);
+        $response = $this->post(route('posts.store'), $attributes);
 
         $response->assertSessionHasErrors('secondary_title');
     }
@@ -85,7 +85,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory(['context' => ''])->raw();
 
-        $response = $this->post(route('posts.store'),$attributes);
+        $response = $this->post(route('posts.store'), $attributes);
 
         $response->assertSessionHasErrors('context');
     }
@@ -99,7 +99,7 @@ class CreatePostTest extends TestCase
 
         $attributes = Post::factory(['type' => ''])->raw();
 
-        $response = $this->post(route('posts.store'),$attributes);
+        $response = $this->post(route('posts.store'), $attributes);
 
         $response->assertForbidden();
     }
@@ -116,12 +116,12 @@ class CreatePostTest extends TestCase
             'image'   => UploadedFile::fake()->image('image.jpg'),
         ]);
 
-        $this->post(route('posts.store'),$attributes)->assertViewIs('post.preview');
+        $this->post(route('posts.store'), $attributes)->assertViewIs('post.preview');
 
-        $attributes['image'] = 'images/post/' . $attributes['image']->hashName();
+        $attributes['image'] = 'images/post/'.$attributes['image']->hashName();
 
         Storage::disk('public')->assertExists($attributes['image']);
 
-        $this->assertDatabaseHas('posts',$attributes);
+        $this->assertDatabaseHas('posts', $attributes);
     }
 }

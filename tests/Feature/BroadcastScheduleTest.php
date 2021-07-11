@@ -17,7 +17,7 @@ class BroadcastScheduleTest extends TestCase
     {
         $schedule = BroadcastSchedule::factory()->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertRedirect('login');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertRedirect('login');
     }
 
     /**
@@ -29,7 +29,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory()->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertForbidden();
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertForbidden();
     }
 
     /**
@@ -41,7 +41,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory(['host' => ''])->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertSessionHasErrors('host');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertSessionHasErrors('host');
     }
 
     /**
@@ -53,7 +53,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory(['guest' => ''])->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertSessionHasErrors('guest');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertSessionHasErrors('guest');
     }
 
     /**
@@ -65,7 +65,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory(['broadcast_channel_id' => ''])->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertSessionHasErrors('broadcast_channel_id');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertSessionHasErrors('broadcast_channel_id');
     }
 
     /**
@@ -77,7 +77,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory(['broadcast_channel_id' => 2])->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertSessionHasErrors('broadcast_channel_id');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertSessionHasErrors('broadcast_channel_id');
     }
 
     /**
@@ -89,7 +89,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory(['datetime' => ''])->raw();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertSessionHasErrors('datetime');
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertSessionHasErrors('datetime');
     }
 
     /**
@@ -103,9 +103,9 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule['datetime'] = $schedule['datetime']->getTimestamp();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertCreated();
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertCreated();
 
-        $this->assertDatabaseHas('broadcast_schedule',$schedule);
+        $this->assertDatabaseHas('broadcast_schedule', $schedule);
     }
 
     /**
@@ -119,7 +119,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule['datetime'] = $schedule['datetime']->getTimestamp();
 
-        $this->post(route('broadcast-schedules.store'),$schedule)->assertJsonStructure([
+        $this->post(route('broadcast-schedules.store'), $schedule)->assertJsonStructure([
             'message',
             'data' => [
                 'id',
@@ -142,7 +142,7 @@ class BroadcastScheduleTest extends TestCase
 
         $newSchedule = BroadcastSchedule::factory()->raw();
 
-        $this->put(route('broadcast-schedules.update',$schedule->id),$newSchedule)->assertRedirect('login');
+        $this->put(route('broadcast-schedules.update', $schedule->id), $newSchedule)->assertRedirect('login');
     }
 
     /**
@@ -156,7 +156,7 @@ class BroadcastScheduleTest extends TestCase
 
         $newSchedule = BroadcastSchedule::factory()->raw();
 
-        $this->put(route('broadcast-schedules.update',$schedule->id),$newSchedule)->assertForbidden();
+        $this->put(route('broadcast-schedules.update', $schedule->id), $newSchedule)->assertForbidden();
     }
 
     /**
@@ -172,9 +172,9 @@ class BroadcastScheduleTest extends TestCase
 
         $newSchedule['datetime'] = $newSchedule['datetime']->getTimestamp();
 
-        $this->put(route('broadcast-schedules.update',$schedule->id),$newSchedule)->assertOk();
+        $this->put(route('broadcast-schedules.update', $schedule->id), $newSchedule)->assertOk();
 
-        $this->assertDatabaseHas('broadcast_schedule',$newSchedule);
+        $this->assertDatabaseHas('broadcast_schedule', $newSchedule);
     }
 
     /**
@@ -190,7 +190,7 @@ class BroadcastScheduleTest extends TestCase
 
         $newSchedule['datetime'] = $newSchedule['datetime']->getTimestamp();
 
-        $this->put(route('broadcast-schedules.update',$schedule->id),$newSchedule)->assertJsonStructure([
+        $this->put(route('broadcast-schedules.update', $schedule->id), $newSchedule)->assertJsonStructure([
             'message',
             'data' => [
                 'id',
@@ -211,7 +211,7 @@ class BroadcastScheduleTest extends TestCase
     {
         $schedule = BroadcastSchedule::factory()->create();
 
-        $this->delete(route('broadcast-schedules.destroy',$schedule->id))->assertRedirect('login');
+        $this->delete(route('broadcast-schedules.destroy', $schedule->id))->assertRedirect('login');
     }
 
     /**
@@ -223,7 +223,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory()->create();
 
-        $this->delete(route('broadcast-schedules.destroy',$schedule->id))->assertForbidden();
+        $this->delete(route('broadcast-schedules.destroy', $schedule->id))->assertForbidden();
     }
 
     /**
@@ -235,20 +235,20 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory()->create();
 
-        $this->assertDatabaseHas('broadcast_schedule',$schedule->only([
-            "host",
-            "guest",
-            "broadcast_channel_id",
-            "datetime",
+        $this->assertDatabaseHas('broadcast_schedule', $schedule->only([
+            'host',
+            'guest',
+            'broadcast_channel_id',
+            'datetime',
         ]));
 
-        $this->delete(route('broadcast-schedules.destroy',$schedule->id))->assertOk();
+        $this->delete(route('broadcast-schedules.destroy', $schedule->id))->assertOk();
 
-        $this->assertDatabaseMissing('broadcast_schedule',$schedule->only([
-            "host",
-            "guest",
-            "broadcast_channel_id",
-            "datetime",
+        $this->assertDatabaseMissing('broadcast_schedule', $schedule->only([
+            'host',
+            'guest',
+            'broadcast_channel_id',
+            'datetime',
         ]));
     }
 
@@ -261,7 +261,7 @@ class BroadcastScheduleTest extends TestCase
 
         $schedule = BroadcastSchedule::factory()->create();
 
-        $this->delete(route('broadcast-schedules.destroy',$schedule->id))->assertJsonStructure([
+        $this->delete(route('broadcast-schedules.destroy', $schedule->id))->assertJsonStructure([
             'message',
         ]);
     }

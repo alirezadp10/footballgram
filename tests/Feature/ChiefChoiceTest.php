@@ -43,10 +43,10 @@ class ChiefChoiceTest extends TestCase
 
         $this->get(route('chief-choices.index'))->assertOk()->assertJsonStructure([
             [
-                "id",
-                "slug",
-                "title",
-                "image",
+                'id',
+                'slug',
+                'title',
+                'image',
             ],
         ])->assertJsonCount(5);
     }
@@ -58,7 +58,7 @@ class ChiefChoiceTest extends TestCase
     {
         $chiefChoice = ChiefChoice::factory()->raw();
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertRedirect('login');
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertRedirect('login');
     }
 
     /**
@@ -70,7 +70,7 @@ class ChiefChoiceTest extends TestCase
 
         $chiefChoice = ChiefChoice::factory()->raw();
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertForbidden();
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertForbidden();
     }
 
     /**
@@ -82,7 +82,7 @@ class ChiefChoiceTest extends TestCase
 
         $chiefChoice = ChiefChoice::factory(['post_id' => ''])->raw();
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertSessionHasErrors('post_id');
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertSessionHasErrors('post_id');
     }
 
     /**
@@ -94,7 +94,7 @@ class ChiefChoiceTest extends TestCase
 
         $chiefChoice = ChiefChoice::factory()->raw();
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertCreated();
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertCreated();
     }
 
     /**
@@ -106,7 +106,7 @@ class ChiefChoiceTest extends TestCase
 
         $chiefChoice = ChiefChoice::factory()->raw();
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertJsonStructure([
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertJsonStructure([
             'message',
         ]);
     }
@@ -124,7 +124,7 @@ class ChiefChoiceTest extends TestCase
 
         $chiefChoice['delete_item'] = 2;
 
-        $this->post(route('chief-choices.store'),$chiefChoice)->assertSessionHasErrors('delete_item');
+        $this->post(route('chief-choices.store'), $chiefChoice)->assertSessionHasErrors('delete_item');
     }
 
     /**
@@ -140,17 +140,16 @@ class ChiefChoiceTest extends TestCase
 
         $newChiefChoice['delete_item'] = $chiefChoice->id;
 
-        $this->assertDatabaseHas('chief_choices',$chiefChoice->only([
-            "post_id",
-            "order",
+        $this->assertDatabaseHas('chief_choices', $chiefChoice->only([
+            'post_id',
+            'order',
         ]));
 
-        $this->post(route('chief-choices.store'),$newChiefChoice);
+        $this->post(route('chief-choices.store'), $newChiefChoice);
 
-        $this->assertDatabaseMissing('chief_choices',$chiefChoice->only([
-            "post_id",
-            "order",
+        $this->assertDatabaseMissing('chief_choices', $chiefChoice->only([
+            'post_id',
+            'order',
         ]));
     }
-
 }

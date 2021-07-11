@@ -15,7 +15,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return FALSE;
+        return false;
     }
 
     /**
@@ -35,7 +35,7 @@ class UpdateUserRequest extends FormRequest
                 'nullable',
                 'min:4',
                 'regex:/^[A-Za-z-_0-9]+$/',
-                Rule::unique('users')->ignore(User::whereUsername($this->route('username')),'username'),
+                Rule::unique('users')->ignore(User::whereUsername($this->route('username')), 'username'),
             ],
         ];
     }
@@ -46,7 +46,7 @@ class UpdateUserRequest extends FormRequest
             'name.required'                     => 'وارد کردن نام الزامی است !',
             'username.min'                      => 'نام کاربری حداقل باید ۴ حرف باشد !',
             'username.unique'                   => 'این نام کاربری از قبل توسط فرد دیگری انتخاب شده است !',
-            'username.regex'                    => "نام کاربری تنها باید شامل عدد و حروف انگلیسی باشد !",
+            'username.regex'                    => 'نام کاربری تنها باید شامل عدد و حروف انگلیسی باشد !',
             'email.email'                       => 'آدرس ایمیل معتبر نمی باشد !',
             'avatar.mimes'                      => 'فرمت تصویر اشتباه است !',
             'avatar.image'                      => 'فرمت تصویر اشتباه است !',

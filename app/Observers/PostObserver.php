@@ -21,7 +21,7 @@ class PostObserver
             Storage::disk('public')->delete($post->getOriginal('image'));
         }
 
-        if (in_array('RELEASED',$post->getChanges())) {
+        if (in_array('RELEASED', $post->getChanges())) {
             $post->user()->increment('count_posts');
         }
     }
@@ -35,7 +35,7 @@ class PostObserver
         Storage::disk('public')->delete($post->image);
 
         $post->user()->update([
-            'count_posts'          => DB::raw("\"count_posts\" - 1"),
+            'count_posts'          => DB::raw('"count_posts" - 1'),
             'count_likes_given'    => DB::raw("\"count_likes_given\" - $post->like"),
             'count_dislikes_given' => DB::raw("\"count_dislikes_given\" - $post->dislike"),
             'count_comments_given' => DB::raw("\"count_comments_given\" - $post->comment"),

@@ -15,7 +15,7 @@ class Scorers extends Model
         'name',
         'count_scores',
         'count_assists',
-        'season'
+        'season',
     ];
 
     public function competition(): BelongsTo

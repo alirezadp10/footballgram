@@ -13,7 +13,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
- * Class User
+ * Class User.
+ *
  * @property static id
  * @property static followings
  * @property static followers
@@ -38,7 +39,9 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use HasFactory,Notifiable,ImageableTrait;
+    use HasFactory;
+    use Notifiable;
+    use ImageableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -84,7 +87,7 @@ class User extends Authenticatable
 
     public function abilities(): BelongsToMany
     {
-        return $this->belongsToMany(Ability::class,'users_abilities','user_id','ability_id');
+        return $this->belongsToMany(Ability::class, 'users_abilities', 'user_id', 'ability_id');
     }
 
     //-----------------------------------------------------------
@@ -107,14 +110,14 @@ class User extends Authenticatable
 
     public function followings(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'followers','follower_id','follow_up_id')
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'follow_up_id')
                     ->using(Follow::class)
                     ->withTimestamps();
     }
 
     public function followers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class,'followers','follow_up_id','follower_id')
+        return $this->belongsToMany(User::class, 'followers', 'follow_up_id', 'follower_id')
                     ->using(Follow::class)
                     ->withTimestamps();
     }
@@ -143,44 +146,44 @@ class User extends Authenticatable
 
     public function postLiked(): MorphToMany
     {
-        return $this->morphedByMany(Post::class,'likable','likes');
+        return $this->morphedByMany(Post::class, 'likable', 'likes');
     }
 
     public function tweetsLiked(): MorphToMany
     {
-        return $this->morphedByMany(Tweet::class,'likable','likes');
+        return $this->morphedByMany(Tweet::class, 'likable', 'likes');
     }
 
     public function commentsLiked(): MorphToMany
     {
-        return $this->morphedByMany(Comment::class,'likable','likes');
+        return $this->morphedByMany(Comment::class, 'likable', 'likes');
     }
 
     public function postDisliked(): MorphToMany
     {
-        return $this->morphedByMany(Post::class,'dislikable','dislikes');
+        return $this->morphedByMany(Post::class, 'dislikable', 'dislikes');
     }
 
     public function tweetsDisliked(): MorphToMany
     {
-        return $this->morphedByMany(Tweet::class,'dislikable','dislikes');
+        return $this->morphedByMany(Tweet::class, 'dislikable', 'dislikes');
     }
 
     public function commentsDisliked(): MorphToMany
     {
-        return $this->morphedByMany(Comment::class,'dislikable','dislikes');
+        return $this->morphedByMany(Comment::class, 'dislikable', 'dislikes');
     }
 
     //-----------------------------------------------------------
 
     public function postTimeline(): HasManyThrough
     {
-        return $this->hasManyThrough(Post::class,Follow::class,'follower_id','user_id','id','follow_up_id');
+        return $this->hasManyThrough(Post::class, Follow::class, 'follower_id', 'user_id', 'id', 'follow_up_id');
     }
 
     public function tweetTimeline(): HasManyThrough
     {
-        return $this->hasManyThrough(Tweet::class,Follow::class,'follower_id','user_id','id','follow_up_id');
+        return $this->hasManyThrough(Tweet::class, Follow::class, 'follower_id', 'user_id', 'id', 'follow_up_id');
     }
 
     //-----------------------------------------------------------
@@ -211,5 +214,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vote::class);
     }
-
 }

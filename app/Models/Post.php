@@ -20,7 +20,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Post extends Model
 {
-    use HasFactory,SoftDeletes,Sluggable,ImageableTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use Sluggable;
+    use ImageableTrait;
 
     protected $fillable = [
         'slug',
@@ -40,7 +43,7 @@ class Post extends Model
     {
         $separator = $this->secondary_title ? '؛ ' : '';
 
-        return sprintf("%s%s%s",$this->main_title,$separator,$this->secondary_title);
+        return sprintf('%s%s%s', $this->main_title, $separator, $this->secondary_title);
     }
 
     public function scopeNews($query)
@@ -80,27 +83,27 @@ class Post extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function comments(): MorphMany
     {
-        return $this->morphMany(Comment::class,'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function likes(): MorphToMany
     {
-        return $this->morphToMany(User::class,'likable','likes')->using(Like::class);
+        return $this->morphToMany(User::class, 'likable', 'likes')->using(Like::class);
     }
 
     public function dislikes(): MorphToMany
     {
-        return $this->morphToMany(User::class,'dislikable','dislikes')->using(Dislike::class);
+        return $this->morphToMany(User::class, 'dislikable', 'dislikes')->using(Dislike::class);
     }
 
     public function tags(): MorphToMany
     {
-        return $this->morphToMany(Tag::class,'taggable')->withTimestamps();
+        return $this->morphToMany(Tag::class, 'taggable')->withTimestamps();
     }
 
     public function chiefChoice()

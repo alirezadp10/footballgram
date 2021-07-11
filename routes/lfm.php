@@ -8,6 +8,6 @@ Route::group([
         'web',
         'auth',
     ],
-],function () {
+], function () {
     UniSharp\LaravelFilemanager\Lfm::routes();
 });

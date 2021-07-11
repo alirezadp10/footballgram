@@ -13,7 +13,7 @@ class CreateSliderTable extends Migration
      */
     public function up()
     {
-        Schema::create('slider',function (Blueprint $table) {
+        Schema::create('slider', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('post_id')->constrained('posts')->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('order')->default(1);

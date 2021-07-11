@@ -13,14 +13,14 @@ class CreateSurveysTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveys',function (Blueprint $table) {
+        Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question');
             $table->text('options');
             $table->timestamps();
         });
 
-        Schema::create('votes',function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('survey_id')->constrained('surveys')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();

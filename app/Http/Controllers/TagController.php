@@ -10,12 +10,12 @@ class TagController extends Controller
     {
         $response = TagRepository::firstOrFail($tag);
 
-        return view('post.tag',$response);
+        return view('post.tag', $response);
     }
 
     public function news()
     {
-        $response = TagRepository::relatedNews(request('name'),[
+        $response = TagRepository::relatedNews(request('name'), [
             'user',
             'likes',
             'dislikes',

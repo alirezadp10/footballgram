@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        return view('user.index',compact('user'));
+        return view('user.index', compact('user'));
     }
 
     public function show($username): View
@@ -24,10 +24,10 @@ class UserController extends Controller
 
         $isFollowing = $user->followers->contains(auth()->user());
 
-        return view('user.index',compact('user','isFollowing'));
+        return view('user.index', compact('user', 'isFollowing'));
     }
 
-    public function update(UpdateUserRequest $request,$username): JsonResponse
+    public function update(UpdateUserRequest $request, $username): JsonResponse
     {
         User::whereUsername($username)->update($request->validated());
 
@@ -42,11 +42,11 @@ class UserController extends Controller
 
         $auth = auth()->user();
 
-        $type = $auth->followings->contains('id',$user->id) ? 'unfollow' : 'follow';
+        $type = $auth->followings->contains('id', $user->id) ? 'unfollow' : 'follow';
 
         $auth->$type($user);
 
-        $user->notify(new FollowingNotification($auth,$type));
+        $user->notify(new FollowingNotification($auth, $type));
 
         return response()->json(compact('type'));
     }
@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        return view('user.configuration',compact('user'));
+        return view('user.configuration', compact('user'));
     }
 
     public function postsTimeline(): JsonResponse
@@ -92,7 +92,7 @@ class UserController extends Controller
 
         $response['title'] = 'دنبال کننده ها';
 
-        return view('user.following',compact('response'));
+        return view('user.following', compact('response'));
     }
 
     public function followings($username): View
@@ -101,14 +101,14 @@ class UserController extends Controller
 
         $response['title'] = 'دنبال شونده ها';
 
-        return view('user.following',compact('response'));
+        return view('user.following', compact('response'));
     }
 
     public function notifications(): JsonResponse
     {
         auth()->user()->unreadNotifications->markAsRead();
 
-        $response = auth()->user()->notifications->map(fn($notification) => $notification->data);
+        $response = auth()->user()->notifications->map(fn ($notification) => $notification->data);
 
         return response()->json($response);
     }

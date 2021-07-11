@@ -11,11 +11,11 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    public function __construct($count = NULL,?Collection $states = NULL,?Collection $has = NULL,?Collection $for = NULL,?Collection $afterMaking = NULL,?Collection $afterCreating = NULL,$connection = NULL)
+    public function __construct($count = null, ?Collection $states = null, ?Collection $has = null, ?Collection $for = null, ?Collection $afterMaking = null, ?Collection $afterCreating = null, $connection = null)
     {
-        parent::__construct($count,$states,$has,$for,$afterMaking,$afterCreating,$connection);
+        parent::__construct($count, $states, $has, $for, $afterMaking, $afterCreating, $connection);
 
-        Storage::fake("public");
+        Storage::fake('public');
     }
 
     /**

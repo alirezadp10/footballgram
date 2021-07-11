@@ -8,12 +8,12 @@ use Illuminate\Support\Carbon;
 
 class TrendTagsPipe
 {
-    public function handle($data,Closure $next)
+    public function handle($data, Closure $next)
     {
         $data['trends'] = Tag::select('name')
                              ->selectRaw('COUNT(taggables.id) as count')
-                             ->join('taggables','taggables.tag_id','tags.id')
-                             ->where('taggables.created_at','>',Carbon::now()->subDay())
+                             ->join('taggables', 'taggables.tag_id', 'tags.id')
+                             ->where('taggables.created_at', '>', Carbon::now()->subDay())
                              ->latest('count')
                              ->take(10)
                              ->groupBy('name')
@@ -22,7 +22,7 @@ class TrendTagsPipe
                                  return [
                                      'name'  => "#{$trend->name}",
                                      'count' => $trend->count,
-                                     'url'   => route('tags.show',[$trend->name]),
+                                     'url'   => route('tags.show', [$trend->name]),
                                  ];
                              });
 

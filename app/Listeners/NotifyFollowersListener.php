@@ -11,6 +11,7 @@ class NotifyFollowersListener
      * Handle the event.
      *
      * @param PostReleaseEvent $event
+     *
      * @return void
      */
     public function handle(PostReleaseEvent $event)

@@ -27,9 +27,7 @@ class CommentableTest extends TestCase
      */
     public function a_comment_can_be_posted()
     {
-
-
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -37,9 +35,9 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment))->assertRedirect("/posts/{$post->slug}#comment-1");
+        $this->post(route('posts.comment', $comment))->assertRedirect("/posts/{$post->slug}#comment-1");
 
-        $this->assertDatabaseHas('comments',[
+        $this->assertDatabaseHas('comments', [
             'context'          => $comment['context'],
             'user_id'          => auth()->id(),
             'commentable_id'   => $post->id,
@@ -52,7 +50,7 @@ class CommentableTest extends TestCase
      */
     public function a_comment_must_have_context()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -60,7 +58,7 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment))->assertSessionHasErrors('context');
+        $this->post(route('posts.comment', $comment))->assertSessionHasErrors('context');
     }
 
     /**
@@ -68,11 +66,11 @@ class CommentableTest extends TestCase
      */
     public function a_comment_must_have_post_id()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $comment = Comment::factory()->raw();
 
-        $this->post(route('posts.comment',$comment))->assertSessionHasErrors('post_id');
+        $this->post(route('posts.comment', $comment))->assertSessionHasErrors('post_id');
     }
 
     /**
@@ -80,7 +78,7 @@ class CommentableTest extends TestCase
      */
     public function parent_id_must_be_exist_in_comments_id()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -88,7 +86,7 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment))->assertSessionHasErrors('parent_id');
+        $this->post(route('posts.comment', $comment))->assertSessionHasErrors('parent_id');
     }
 
     /**
@@ -102,7 +100,7 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment))->assertRedirect('login');
+        $this->post(route('posts.comment', $comment))->assertRedirect('login');
     }
 
     /**
@@ -118,7 +116,7 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment))->assertForbidden();
+        $this->post(route('posts.comment', $comment))->assertForbidden();
     }
 
     /**
@@ -126,7 +124,7 @@ class CommentableTest extends TestCase
      */
     public function when_user_sent_comment_user_count_comments_taken_must_be_increased()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -134,9 +132,9 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        $this->assertEquals(1,auth()->user()->fresh()->count_comments_taken);
+        $this->assertEquals(1, auth()->user()->fresh()->count_comments_taken);
     }
 
     /**
@@ -144,7 +142,7 @@ class CommentableTest extends TestCase
      */
     public function when_comment_sent_author_count_comments_given_must_be_increased()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -152,9 +150,9 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        $this->assertEquals(1,$post->user->count_comments_given);
+        $this->assertEquals(1, $post->user->count_comments_given);
     }
 
     /**
@@ -162,7 +160,7 @@ class CommentableTest extends TestCase
      */
     public function when_comment_sent_on_post_count_of_model_comments_must_be_increased()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -170,9 +168,9 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        $this->assertEquals(1,$post->fresh()->comment);
+        $this->assertEquals(1, $post->fresh()->comment);
     }
 
     /**
@@ -180,7 +178,7 @@ class CommentableTest extends TestCase
      */
     public function when_reply_sent_it_must_notify_parent_comment()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->has(Comment::factory())->create();
 
@@ -188,9 +186,9 @@ class CommentableTest extends TestCase
 
         $reply['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$reply));
+        $this->post(route('posts.comment', $reply));
 
-        Notification::assertSentTo($post->comments->first()->user,ReplyNotification::class);
+        Notification::assertSentTo($post->comments->first()->user, ReplyNotification::class);
     }
 
     /**
@@ -198,7 +196,7 @@ class CommentableTest extends TestCase
      */
     public function when_comment_sent_its_tags_must_be_detected()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $post = Post::factory()->create();
 
@@ -208,14 +206,14 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        $this->assertEquals("this is <a href='/tags/example' class='hashtag'>#example</a> <a href='/tags/comment' class='hashtag'>#comment</a> for detecting hashtags",Comment::first()->context);
+        $this->assertEquals("this is <a href='/tags/example' class='hashtag'>#example</a> <a href='/tags/comment' class='hashtag'>#comment</a> for detecting hashtags", Comment::first()->context);
 
-        $this->assertDatabaseHas('tags',[
+        $this->assertDatabaseHas('tags', [
             'name'  => 'comment',
             'count' => '1',
-        ])->assertDatabaseHas('tags',[
+        ])->assertDatabaseHas('tags', [
             'name'  => 'example',
             'count' => '1',
         ]);
@@ -226,7 +224,7 @@ class CommentableTest extends TestCase
      */
     public function when_comment_sent_its_mentions_must_be_detected()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         User::factory(['username' => 'alirezadp10'])->create();
 
@@ -238,9 +236,9 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        $this->assertEquals("this is <a href='/users/alirezadp10' class='mention'>@alirezadp10</a> comment for @salam",Comment::first()->context);
+        $this->assertEquals("this is <a href='/users/alirezadp10' class='mention'>@alirezadp10</a> comment for @salam", Comment::first()->context);
     }
 
     /**
@@ -248,7 +246,7 @@ class CommentableTest extends TestCase
      */
     public function when_user_mentioned_comment_must_be_notified()
     {
-        $this->signIn()->ability("create-comment");
+        $this->signIn()->ability('create-comment');
 
         $notifiable = User::factory(['username' => 'alirezadp10'])->create();
 
@@ -260,8 +258,8 @@ class CommentableTest extends TestCase
 
         $comment['post_id'] = $post->id;
 
-        $this->post(route('posts.comment',$comment));
+        $this->post(route('posts.comment', $comment));
 
-        Notification::assertSentTo($notifiable,MentionNotification::class);
+        Notification::assertSentTo($notifiable, MentionNotification::class);
     }
 }

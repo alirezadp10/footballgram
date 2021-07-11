@@ -8,7 +8,7 @@ class CommentController extends Controller
 {
     public function like(Comment $comment)
     {
-        $this->authorize('like',$comment);
+        $this->authorize('like', $comment);
 
         if (!$comment->likes->contains(auth()->id())) {
             auth()->user()->like($comment);
@@ -26,7 +26,7 @@ class CommentController extends Controller
 
     public function dislike(Comment $comment)
     {
-        $this->authorize('dislike',$comment);
+        $this->authorize('dislike', $comment);
 
         if (!$comment->dislikes->contains(auth()->id())) {
             auth()->user()->dislike($comment);

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Tweet extends Model
@@ -29,7 +28,7 @@ class Tweet extends Model
                     return Str::random(20);
                 },
                 'onUpdate' => true,
-          ],
+            ],
         ];
     }
 

@@ -13,7 +13,7 @@ class CreateScorersTable extends Migration
      */
     public function up()
     {
-        Schema::create('scorers',function (Blueprint $table) {
+        Schema::create('scorers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('competition_id')->constrained('competitions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('club');

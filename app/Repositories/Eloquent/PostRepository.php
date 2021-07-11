@@ -20,10 +20,10 @@ class PostRepository extends BaseRepository implements PostContract
 
     public function dontReleased($slug)
     {
-        return $this->model->whereSlug($slug)->where('status','!=','RELEASE')->firstOrFail();
+        return $this->model->whereSlug($slug)->where('status', '!=', 'RELEASE')->firstOrFail();
     }
 
-    public function released($slug,$with = [])
+    public function released($slug, $with = [])
     {
         return $this->model->with($with)->whereSlug($slug)->released()->firstOrFail();
     }
@@ -35,17 +35,16 @@ class PostRepository extends BaseRepository implements PostContract
 
     public function lastNews()
     {
-        return $this->model->news()->released()->latest()->customPaginate(15,function ($news) {
+        return $this->model->news()->released()->latest()->customPaginate(15, function ($news) {
             return [
                 'title' => $news->title,
                 'time'  => Carbon::parse($news->created_at)->format('H:i'),
-                'url'   => route('posts.show',$news->slug),
+                'url'   => route('posts.show', $news->slug),
             ];
         });
     }
 
     public function chiefChoice()
     {
-        
     }
 }

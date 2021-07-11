@@ -28,21 +28,21 @@ class Comment extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function likes(): MorphToMany
     {
-        return $this->morphToMany(User::class,'likable','likes')->using(Like::class);
+        return $this->morphToMany(User::class, 'likable', 'likes')->using(Like::class);
     }
 
     public function dislikes(): MorphToMany
     {
-        return $this->morphToMany(User::class,'dislikable','dislikes')->using(Dislike::class);
+        return $this->morphToMany(User::class, 'dislikable', 'dislikes')->using(Dislike::class);
     }
 
     public function tags(): MorphToMany
     {
-        return $this->morphToMany(Tag::class,'taggable')->withTimestamps();
+        return $this->morphToMany(Tag::class, 'taggable')->withTimestamps();
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Repositories\Eloquent;
-
 
 use App\Repositories\Contracts\RepositoryContract;
 
@@ -25,7 +23,7 @@ class BaseRepository implements RepositoryContract
         return $this->model->create($data);
     }
 
-    public function update($id,$data)
+    public function update($id, $data)
     {
         return $this->model->find($id)->update($data);
     }

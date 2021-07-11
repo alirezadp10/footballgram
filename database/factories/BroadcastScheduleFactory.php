@@ -23,9 +23,9 @@ class BroadcastScheduleFactory extends Factory
     public function definition()
     {
         return [
-            'host'                 => $this->faker->randomElement(['barcelona','realMadrid','arsenal']),
-            'guest'                => $this->faker->randomElement(['manUnited','manCity','chelsea']),
-            'datetime'             => $this->faker->dateTimeBetween('now','+2 days'),
+            'host'                 => $this->faker->randomElement(['barcelona', 'realMadrid', 'arsenal']),
+            'guest'                => $this->faker->randomElement(['manUnited', 'manCity', 'chelsea']),
+            'datetime'             => $this->faker->dateTimeBetween('now', '+2 days'),
             'broadcast_channel_id' => BroadcastChannel::factory(),
         ];
     }

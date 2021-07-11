@@ -8,11 +8,11 @@ use Illuminate\Support\Carbon;
 
 class HotNewsPipe
 {
-    public function handle($data,Closure $next)
+    public function handle($data, Closure $next)
     {
         $data['hotNews'] = Post::released()
                                ->news()
-                               ->where('created_at','>=',Carbon::now()->subDays(3))
+                               ->where('created_at', '>=', Carbon::now()->subDays(3))
                                ->latest('view')
                                ->take(15)
                                ->get()
@@ -20,7 +20,7 @@ class HotNewsPipe
                                    return [
                                        'title' => $news->title,
                                        'time'  => Carbon::parse($news->created_at)->format('H:i'),
-                                       'url'   => route('posts.show',$news->slug),
+                                       'url'   => route('posts.show', $news->slug),
                                    ];
                                });
 

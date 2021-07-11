@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property boolean $timestamps
+ * @property bool $timestamps
  * @mixin Builder
  */
 class Competition extends Model
@@ -17,7 +17,7 @@ class Competition extends Model
 
     protected $table = 'competitions';
 
-    public $timestamps = FALSE;
+    public $timestamps = false;
 
     protected $fillable = [
         'name',

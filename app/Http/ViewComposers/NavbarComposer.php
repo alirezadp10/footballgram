@@ -11,22 +11,22 @@ class NavbarComposer
      * Bind data to the view.
      *
      * @param View $view
+     *
      * @return void
      */
     public function compose(View $view)
     {
-        if (!Auth::check()){
-    return;} 
+        if (!Auth::check()) {
+            return;
+        }
 
-            $auth = auth()->user()->load('unreadNotifications');
+        $auth = auth()->user()->load('unreadNotifications');
 
-            $view['navbar'] = [
-                'url'                 => route('users.home'),
-                'name'                => $auth->name,
-                'avatar'              => $auth->image,
-                'notifications_count' => $auth->unreadNotifications()->count(),
-            ];
-
-        
+        $view['navbar'] = [
+            'url'                 => route('users.home'),
+            'name'                => $auth->name,
+            'avatar'              => $auth->image,
+            'notifications_count' => $auth->unreadNotifications()->count(),
+        ];
     }
 }

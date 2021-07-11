@@ -8,7 +8,7 @@ class Follow extends MorphPivot
 {
     protected $table = 'followers';
 
-    public $incrementing = TRUE;
+    public $incrementing = true;
 
     protected static function boot()
     {

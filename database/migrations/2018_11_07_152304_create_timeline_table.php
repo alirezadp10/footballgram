@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTimelineTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateTimelineTable extends Migration
      */
     public function up()
     {
-        Schema::create('timeline',function (Blueprint $table) {
+        Schema::create('timeline', function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('content');
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();

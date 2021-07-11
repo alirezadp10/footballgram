@@ -18,6 +18,6 @@ class TagTest extends TestCase
     {
         Tag::factory(['name' => 'messi'])->hasAttached(Post::factory()->count(5))->create();
 
-        $this->assertEquals(1,Tag::whereName('messi')->count());
+        $this->assertEquals(1, Tag::whereName('messi')->count());
     }
 }

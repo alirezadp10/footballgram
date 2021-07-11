@@ -17,17 +17,16 @@ class CommentPolicy
 
     public function create(User $user)
     {
-        return $user->abilities->contains('title','create-comment');
+        return $user->abilities->contains('title', 'create-comment');
     }
 
-    public function like(User $user,Comment $comment): bool
+    public function like(User $user, Comment $comment): bool
     {
         return $comment->user_id != $user->id;
     }
 
-    public function dislike(User $user,Comment $comment): bool
+    public function dislike(User $user, Comment $comment): bool
     {
         return $comment->user_id != $user->id;
     }
-
 }

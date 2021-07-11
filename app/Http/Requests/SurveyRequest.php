@@ -23,7 +23,7 @@ class SurveyRequest extends FormRequest
     {
         $data = $this->all();
 
-        $data['options'] = array_map([$this,'prepareOptions'],$data['options']);
+        $data['options'] = array_map([$this, 'prepareOptions'], $data['options']);
 
         return $data;
     }
