@@ -14,10 +14,10 @@ class FollowingNotification extends Notification
     /**
      * Create a new notification instance.
      *
-     * @param User $user
+     * @param User   $user
      * @param string $type
      */
-    public function __construct(public User $user,public string $type)
+    public function __construct(public User $user, public string $type)
     {
     }
 
@@ -42,7 +42,7 @@ class FollowingNotification extends Notification
     public function toBroadcast(): BroadcastMessage
     {
         return new BroadcastMessage([
-            'url'     => route('users.show',$this->user->username),
+            'url'     => route('users.show', $this->user->username),
             'image'   => $this->user->image,
             'message' => $this->message(),
         ]);
@@ -56,7 +56,7 @@ class FollowingNotification extends Notification
     public function toDatabase(): array
     {
         return [
-            'url'     => route('users.show',$this->user->username),
+            'url'     => route('users.show', $this->user->username),
             'image'   => $this->user->image,
             'message' => $this->message(),
         ];
@@ -71,6 +71,7 @@ class FollowingNotification extends Notification
             'follow'   => 'شما را دنبال می کند.',
             'unfollow' => 'دیگر شما را دنبال نمی کند.',
         ];
-        return sprintf("%s %s",$this->user->name,$messageType[$this->type]);
+
+        return sprintf('%s %s', $this->user->name, $messageType[$this->type]);
     }
 }

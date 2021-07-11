@@ -2,10 +2,8 @@
 
 namespace App\Notifications;
 
-
 use App\Models\Post;
 use App\Models\Tweet;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Messages\BroadcastMessage;
@@ -75,9 +73,9 @@ class NewPostNotification extends Notification
             Tweet::class => 'tweets',
         ];
 
-        $name = $route[get_class($this->post)] . ".show";
+        $name = $route[get_class($this->post)].'.show';
 
-        return route($name,$this->post['slug']);
+        return route($name, $this->post['slug']);
     }
 
     /**
@@ -85,6 +83,6 @@ class NewPostNotification extends Notification
      */
     private function message(): string
     {
-        return sprintf("%s %s",$this->post->user->name,"مطلب جدید ارسال کرده است.");
+        return sprintf('%s %s', $this->post->user->name, 'مطلب جدید ارسال کرده است.');
     }
 }

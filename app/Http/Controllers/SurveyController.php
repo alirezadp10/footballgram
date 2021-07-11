@@ -12,14 +12,14 @@ class SurveyController extends Controller
     {
         $response['survey'] = $survey;
 
-        $response['surveySelectedOption'] = $survey?->votes()->where('user_id',auth()->id())->first()?->option;
+        $response['surveySelectedOption'] = $survey?->votes()->where('user_id', auth()->id())->first()?->option;
 
         return response()->json($response);
     }
 
-    public function vote(Request $request,$survey)
+    public function vote(Request $request, $survey)
     {
-        auth()->user()->votes()->toggle($survey->id,$this->validate($request,[
+        auth()->user()->votes()->toggle($survey->id, $this->validate($request, [
             'option' => 'required',
         ]));
 
@@ -30,9 +30,9 @@ class SurveyController extends Controller
     {
         Survey::create($request->validated());
 
-        session()->flash('message.type','success');
-        session()->flash('message.content','با موفقیت انجام شد.');
-        session()->flash('message.time','10');
+        session()->flash('message.type', 'success');
+        session()->flash('message.content', 'با موفقیت انجام شد.');
+        session()->flash('message.time', '10');
 
         return back();
     }

@@ -3,10 +3,8 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
-
 use App\Models\Post;
 use App\Models\Tweet;
-
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
 
@@ -67,7 +65,7 @@ class ReplyNotification extends Notification
      */
     private function message(): string
     {
-        return sprintf("%s %s",$this->comment->user->name,"کامنت شما را پاسخ داده است:");
+        return sprintf('%s %s', $this->comment->user->name, 'کامنت شما را پاسخ داده است:');
     }
 
     /**
@@ -82,8 +80,8 @@ class ReplyNotification extends Notification
 
         $post = $this->comment->commentable;
 
-        $name = $route[get_class($post)] . ".show";
+        $name = $route[get_class($post)].'.show';
 
-        return sprintf("%s#comment-%s",route($name,$post->slug),$this->comment->id);
+        return sprintf('%s#comment-%s', route($name, $post->slug), $this->comment->id);
     }
 }
