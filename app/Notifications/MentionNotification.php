@@ -3,10 +3,8 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
-
 use App\Models\Post;
 use App\Models\Tweet;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
@@ -77,9 +75,9 @@ class MentionNotification extends Notification
 
         $post = $this->comment->commentable;
 
-        $name = $route[get_class($post)] . ".show";
+        $name = $route[get_class($post)].'.show';
 
-        return route($name,$post->slug);
+        return route($name, $post->slug);
     }
 
     /**
@@ -87,6 +85,6 @@ class MentionNotification extends Notification
      */
     private function message(): string
     {
-        return sprintf("%s %s",$this->comment->user->name,"شما را منشن کرده است.");
+        return sprintf('%s %s', $this->comment->user->name, 'شما را منشن کرده است.');
     }
 }

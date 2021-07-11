@@ -8,7 +8,6 @@ use App\Events\PostReleaseEvent;
 use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Post;
 use Facades\App\Repositories\Contracts\PostRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -26,9 +25,9 @@ class PostController extends Controller
     {
         $post = auth()->user()->posts()->create($request->validated());
 
-        return view('post.preview',compact('post'))->with([
-            'releaseLink' => route('posts.release',['slug' => $post->slug]),
-            'draftLink'   => route('posts.draft',['slug' => $post->slug]),
+        return view('post.preview', compact('post'))->with([
+            'releaseLink' => route('posts.release', ['slug' => $post->slug]),
+            'draftLink'   => route('posts.draft', ['slug' => $post->slug]),
             'postType'    => $post->type,
         ]);
     }
@@ -41,9 +40,9 @@ class PostController extends Controller
 
         $post->update(['status' => 'RELEASED']);
 
-        event(new PostReleaseEvent(auth()->user(),$post));
+        event(new PostReleaseEvent(auth()->user(), $post));
 
-        return redirect()->route('posts.show',$post->slug);
+        return redirect()->route('posts.show', $post->slug);
     }
 
     public function draft(): RedirectResponse
@@ -54,7 +53,7 @@ class PostController extends Controller
             'status' => 'DRAFT',
         ]);
 
-        return redirect()->route('posts.show',$post->slug);
+        return redirect()->route('posts.show', $post->slug);
     }
 
     public function comment(CreateCommentRequest $request): RedirectResponse
@@ -67,16 +66,16 @@ class PostController extends Controller
             'user_id'   => auth()->id(),
         ]);
 
-        event(new PostCommentEvent(auth()->user(),$comment));
+        event(new PostCommentEvent(auth()->user(), $comment));
 
-        return redirect(sprintf("%s#comment-%s",route('posts.show',$post->slug),$comment->id));
+        return redirect(sprintf('%s#comment-%s', route('posts.show', $post->slug), $comment->id));
     }
 
     public function like($slug): JsonResponse
     {
-        $post = PostRepository::released($slug,['likes','dislikes']);
+        $post = PostRepository::released($slug, ['likes', 'dislikes']);
 
-        $this->authorize('like',$post);
+        $this->authorize('like', $post);
 
         if (!$post->likes->contains(auth()->id())) {
             auth()->user()->like($post);
@@ -95,9 +94,9 @@ class PostController extends Controller
 
     public function dislike($slug): JsonResponse
     {
-        $post = PostRepository::released($slug,['likes','dislikes']);
+        $post = PostRepository::released($slug, ['likes', 'dislikes']);
 
-        $this->authorize('dislike',$post);
+        $this->authorize('dislike', $post);
 
         if (!$post->dislikes->contains(auth()->id())) {
             auth()->user()->dislike($post);
@@ -116,15 +115,15 @@ class PostController extends Controller
 
     public function show($slug): View
     {
-        $post = PostRepository::released($slug,['user:id,name']);
+        $post = PostRepository::released($slug, ['user:id,name']);
 
         $post['is_liked'] = $post->likes->contains(auth()->user());
 
         $post['is_disliked'] = $post->dislikes->contains(auth()->user());
 
         $permissions = [
-            'update_post'         => auth()->user()?->can('edit',$post),
-            'delete_post'         => auth()->user()?->can('delete',$post),
+            'update_post'         => auth()->user()?->can('edit', $post),
+            'delete_post'         => auth()->user()?->can('delete', $post),
             'manage_chief_choice' => auth()->user()?->can('manage-chief-choice'),
             'manage_slide_post'   => auth()->user()?->can('manage-slide-post'),
             'create_comment'      => auth()->user()?->can('create-comment'),
@@ -132,16 +131,16 @@ class PostController extends Controller
 
         $post->increment('view');
 
-        return view('post.show',compact('post','permissions'));
+        return view('post.show', compact('post', 'permissions'));
     }
 
     public function edit($slug): View
     {
         $post = PostRepository::released($slug);
 
-        $this->authorize('edit',$post);
+        $this->authorize('edit', $post);
 
-        return view('post.edit',compact('post'));
+        return view('post.edit', compact('post'));
     }
 
     public function update(UpdatePostRequest $request): RedirectResponse
@@ -150,14 +149,14 @@ class PostController extends Controller
 
         event(new DetectTagsEvent($request->post));
 
-        return redirect()->route('posts.show',$request->post->slug);
+        return redirect()->route('posts.show', $request->post->slug);
     }
 
     public function destroy($slug): RedirectResponse
     {
         $post = PostRepository::firstOrFail($slug);
 
-        $this->authorize('delete',$post);
+        $this->authorize('delete', $post);
 
         $post->delete();
 

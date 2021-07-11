@@ -10,10 +10,13 @@ use Illuminate\Queue\SerializesModels;
 
 class DetectTagsEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
+     *
      * @param Model $model
      */
     public function __construct(public Model $model)

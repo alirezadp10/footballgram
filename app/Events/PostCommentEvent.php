@@ -11,12 +11,14 @@ use Illuminate\Queue\SerializesModels;
 
 class PostCommentEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
      *
-     * @param User $user
+     * @param User    $user
      * @param Comment $comment
      */
     public function __construct(public User $user, public Comment $comment)

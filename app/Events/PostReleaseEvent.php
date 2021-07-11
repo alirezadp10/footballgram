@@ -11,14 +11,17 @@ use Illuminate\Queue\SerializesModels;
 
 class PostReleaseEvent
 {
-    use Dispatchable,InteractsWithSockets,SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
-     * @param User $user
+     *
+     * @param User  $user
      * @param Model $model
      */
-    public function __construct(public User $user,public Model $model)
+    public function __construct(public User $user, public Model $model)
     {
     }
 
